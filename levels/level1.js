@@ -137,13 +137,14 @@ function createEnemy4(d)
 }
 
 // return a level 5 enemy, spawning at the specified frame.
+// Level 1 Boss: Keine Kamishirasawa
 function createEnemy5(d)
 {
 	var e = new Enemy();
 	e.level = 5;
-	e.life = 600;
-	e.w = 248; e.h = 85;
-	e.image = img_e5;
+	e.life = 700;
+	e.w = 48; e.h = 64;
+	e.image = img_bs2;
 	e.delay = d;
 	return e;
 }

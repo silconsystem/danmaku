@@ -1,0 +1,41 @@
+script concept:
+
+prologue:
+
+It was quiet around Marisa Kirisames little house, too quiet and a little boring...
+
+There were rumours about humans dissappearing from the village and Marisa had a vision about a powerfull unknown Magic involved
+
+Marisa decides to investigate, new spells !? could be interesting...
+Lets start by seeking out Alice and her spellbook, she has had powerfull spells before.
+Maybe we'll find out more along the way.
+
+Stage 1 (Mystic Square - Open Sesame) Keine Kamishisawa:
+
+Marisa:	Why are you here ??
+Keine: 	I seek more power to protect my village, strange things happen at night.
+Marisa:	I was first, can I help you out ??
+Keine:	I can manage, you'll see !
+
+--> Attacks Marisa
+
+defeated:
+
+Marisa: 	Whats with you ?
+Keine: 	Frustrated, cant find Alice either. Some spoke of a lake nearby..?!
+
+Stage 2 (Lotus Land Story - Lake of Blood) Kurimi
+
+Marisa: 	Havent I met you before ?
+Kurimi:	I heard there a feast in Gensokyo nowadays...
+Marisa:	Not if I can help it !!
+Kurimi:	Try and stop me !!
+
+--> Attacks Marisa
+
+defeated:
+
+Marisa:	Now, where's alice gone ?
+Kurimi:	A lot of folk have gone to the human village, dont know why though...
+
+more follows....

@@ -32,6 +32,7 @@
 			Frame: <span id="frame">0</span><br />
 			Score: <span id="score">0</span><br />
 			Power: <span id="power">0</span><br />
+			Bombs: <span id="bombs">0</span><br />
 			Grazing: <span id="grazeplus">0</span><br />
 			Grazing points: <span id="gr">0</span><br />
 			Current Level: <span id="level">0</span><br />
@@ -47,7 +48,6 @@
 			<input type="button" onClick="javascript:play();" value="Play!" style="width: 120px;" />
 			<br /><br />
 			<b>Features</b><br />
-			- no bombs<br />
 			
 			- final destination<br />
 			<br />
@@ -64,8 +64,8 @@
 
 <div style="display: none;">
 	<img id="ex" src="img/098.png" />
-	<img id="p" src="img/199.png" />
-	<img id="s" src="img/056.png" />
+	<img id="s" src="img/199.png" />
+	<img id="p" src="img/056.png" />
 	<img id="b6a" src="img/b6a.png" />
 	<img id="b8a" src="img/b8a.png" />
 	<img id="b8b" src="img/b8b.png" />
@@ -88,15 +88,17 @@
 	<img id="b16i" src="img/b16i.png" />
 	<img id="b16j" src="img/b16j.png" />
 	<img id="bp" src="img/bp.png" />
+	<img id="bb2" src="img/bb2.png" />
 	<img id="pg" src="img/154.png" />
 	<img id="e1" src="img/157.png" />
 	<img id="e2" src="img/152.png" />
 	<img id="e3" src="img/153.png" />
 	<img id="e4" src="img/099.png" />
-	<img id="e5" src="img/100.png" />
+	<img id="e5" src="img/100.png" /><!-- Boss: Scarlet Devil -->
 	<img id="e6" src="img/161.png" />
 	<img id="e7" src="img/162.png" />
-	<img id="bs2" src="img/bs2.png" />
+	<img id="bs2" src="img/bs2.png" /><!-- Boss: Keine Kamishirasawa -->
+	<img id="bss2" src="img/bss2.png" /><!-- Boss: Kurimi -->
 </div>
 
 </body>
@@ -111,14 +113,11 @@ function extend(childClassOrObject, parentClassOrObject)
 	childClassOrObject.prototype.constructor = childClassOrObject;
 } 
 </script>
-
+<!-- Game Elements -->
 <script type="text/javascript" src="js/Background.js"></script>
-
 <script type="text/javascript" src="js/Movement.js"></script>
 <script type="text/javascript" src="js/SpellCard.js"></script>
-
 <script type="text/javascript" src="js/Sprite.js"></script>
-
 <script type="text/javascript" src="js/Player.js"></script>
 <script type="text/javascript" src="js/PlayerBullet.js"></script>
 <script type="text/javascript" src="js/Enemy.js"></script>
@@ -126,9 +125,9 @@ function extend(childClassOrObject, parentClassOrObject)
 <script type="text/javascript" src="js/Powerup.js"></script>
 <script type="text/javascript" src="js/Explosion.js"></script>
 <script type="text/javascript" src="js/Text.js"></script>
-
+<!-- Level Engine -->
 <script type="text/javascript" src="js/Level.js"></script>
-
+<!-- levels -->
 <script type="text/javascript" src="levels/level1.js"></script>
 <script type="text/javascript" src="levels/level2.js"></script>
 <script type="text/javascript" src="levels/level3.js"></script>
@@ -144,6 +143,7 @@ var ctx = canv.getContext('2d');
 var frame_text = document.getElementById('frame');
 var score_text = document.getElementById('score');
 var power_text = document.getElementById('power');
+var bombs_text = document.getElementById('bombs');
 var graze_text = document.getElementById('grazeplus');
 var total_text = document.getElementById('total');
 var level_text = document.getElementById('level');
@@ -157,14 +157,15 @@ var gr_text = document.getElementById('gr');
 // document images
 var img_p = document.getElementById('p');
 var img_s = document.getElementById('s');
-
+// enemies
 var img_e1 = document.getElementById('e1');
 var img_e2 = document.getElementById('e2');
 var img_e3 = document.getElementById('e3');
 var img_e4 = document.getElementById('e4');
-var img_e5 = document.getElementById('e5');
+var img_e5 = document.getElementById('e5');// Scarlet Devil
 var img_e6 = document.getElementById('e6');
 var img_e7 = document.getElementById('e7');
+// bullets
 var img_b6a = document.getElementById('b6a');
 var img_b8a = document.getElementById('b8a');
 var img_b8b = document.getElementById('b8b');
@@ -186,22 +187,32 @@ var img_b16g = document.getElementById('b16g');
 var img_b16h = document.getElementById('b16h');
 var img_b16i = document.getElementById('b16i');
 var img_b16j = document.getElementById('b16j');
-var img_bs2 = document.getElementById('bs2');
-
+var img_bs2 = document.getElementById('bs2');// Keine Kamishirasawa
+var img_bss2 = document.getElementById('bss2');// Kurimi
+// player bullets
 var img_pg = document.getElementById('pg');
 var img_bp = document.getElementById('bp');
+var img_bb2 = document.getElementById('bb2');
 
 var img_ex = document.getElementById('ex');
 
 // other variables
 var now = 0;
 var score = 0;
+var bombs = 3;
 var interval = 0;
 var currentLevel = 1;
 
 var bg = new Background(); // background global variable 
 var pg = new Player(); // player global variable
 var level = new Level(); // level global variable
+
+// music
+var bgm_st1 = new Audio("audio/th06_03.mp3");
+bgm_st1.addEventListener('ended', function() {
+        this.currentTime = 0;
+        this.play();
+}, false);
 
 bg.clear();
 
@@ -274,7 +285,7 @@ function work()
 	for (var i = 0; i < spawned.length; i++)
 	    enemies[enemies.length] = spawned[i];
 	
-	var graze_score = score*pg.graze; 
+	var graze_score = pg.graze * 1000; 
 	
 	// print stuff
 	score_text.innerHTML = score;
@@ -288,6 +299,14 @@ function work()
 	graze_text.innerHTML = graze_score;
 	total_text.innerHTML = score + graze_score;
 	level_text.innerHTML = currentLevel;
+	bombs_text.innerHTML = bombs;
+	
+	        if ((score+graze_score) == 10000000)
+	        {
+		        bombs = 3;
+		        pg.health = 10;
+	        }
+	
 	oe_text.innerHTML = enemies.length;
 	ob_text.innerHTML = bullets.length;
 	op_text.innerHTML = powerups.length;
@@ -339,39 +358,47 @@ function play()
 	lf_p = 0;
 	rg_p = 0;
 	sh_p = 0;
+	s2_p = 0;
 	sm_p = 0;
 	
 	// level handler
 	if (powerups.length == 0 && enemies.length == 0 && bullets.length == 0 && currentLevel == 1)
 	{
-		echo("STAGE ONE - Gensokyo Border!");
+		echo("STAGE ONE - Open Sesame!");
 		echoAdds("Marisa is curious about her vision and heads off to investigate...");
 		level = generateLevel1();
+		
+		//bgm_st1.play();
+		//bgm_st1.loop = true;
 	}
 	else if (powerups.length == 0 && enemies.length == 0 && bullets.length == 0 && currentLevel == 2)
 	{
-		echo("STAGE TWO - Scarlet Mansion Garden!");
+		echo("STAGE TWO - Lake of Blood!");
 		echoAdds("You decide to check the mistress her garden out yourself...");
-		level = generateLevel2();
+		level = generateLevel2();					
 		pg.health = 10;
+		bombs = 3;
 	}
 	else if (powerups.length == 0 && enemies.length == 0 && bullets.length == 0 && currentLevel == 3)
 	{
 		echo("STAGE THREE - Forest of Magic !");
 		level = generateLevel3();
 		pg.health = 10;
+		bombs = 3;
 	}
 	else if (powerups.length == 0 && enemies.length == 0 && bullets.length == 0 && currentLevel == 4)
 	{
 		echo("STAGE FOUR - Human Village!");
 		level = generateLevel4();
 		pg.health = 10;
+		bombs = 3;
 	}
 	else if (powerups.length == 0 && enemies.length == 0 && bullets.length == 0 && currentLevel == 5)
 	{
 		echo("THE SHOWDOWN - Scarlet Devil!");
 		level = generateLevel5();
 		pg.health = 10;
+		bombs = 3;
 	}
 	else if (powerups.length == 0 && enemies.length == 0 && bullets.length == 0 && currentLevel == 6)
 	{
@@ -426,23 +453,25 @@ function rand(sn, en)
 // respond to keydown
 document.onkeydown = function(e)
 {
-	if (e.keyCode == 37) lf_p = 1;
-	else if (e.keyCode == 38) up_p = 1;
-	else if (e.keyCode == 39) rg_p = 1;
-	else if (e.keyCode == 40) dw_p = 1;
-	else if (e.keyCode == 90) sh_p = 1;
-	else if (e.keyCode == 16) sm_p = 1;
+	if (e.keyCode == 37) lf_p = 1;// left
+	else if (e.keyCode == 38) up_p = 1;// up
+	else if (e.keyCode == 39) rg_p = 1;// right
+	else if (e.keyCode == 40) dw_p = 1;// down
+	else if (e.keyCode == 90) sh_p = 1;// z: shot
+	else if (e.keyCode == 88) s2_p = 1;// x: bombs
+	else if (e.keyCode == 16) sm_p = 1;// shift: slow
 }
 
 // respond to keyup
 document.onkeyup = function(e)
 {
-	if (e.keyCode == 37) lf_p = 0;
-	else if (e.keyCode == 38) up_p = 0;
-	else if (e.keyCode == 39) rg_p = 0;
-	else if (e.keyCode == 40) dw_p = 0;
-	else if (e.keyCode == 90) sh_p = 0;
-	else if (e.keyCode == 16) sm_p = 0;
+	if (e.keyCode == 37) lf_p = 0;// left
+	else if (e.keyCode == 38) up_p = 0;// up
+	else if (e.keyCode == 39) rg_p = 0;// right
+	else if (e.keyCode == 40) dw_p = 0;// down
+	else if (e.keyCode == 90) sh_p = 0;// z: shot
+	else if (e.keyCode == 88) s2_p = 0;// x: bombs
+	else if (e.keyCode == 16) sm_p = 0;// shift: slow
 }
 
 </script>

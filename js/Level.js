@@ -5,7 +5,6 @@
  * Copyright (c) Sako 2010 - zomgsako@gmail.com
  * Freely redistributable and editable.
 */
-
 function Level()
 {	
 	this.enemies = []; // enemy array

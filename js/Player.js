@@ -315,9 +315,47 @@ Player.prototype.shoot = function()
 		bullets[bullets.length] = b3;
 	}
 }
+Player.prototype.bomb = function()
+{
+	// circle bomb
+	
+	var coords = getCircle();
+	for (var i = 0; i < coords.length; i++)
+	{
+	        var b1 = new PlayerBomb();
+	        b1.addMovement(new Movement(2, this.movement.cx, this.movement.cy, Math.round(coords[i].x*2), Math.round(coords[i].y-1200)));
+	        bullets[bullets.length] = b1;
+	}
+	
+	function getCircle()
+	{
+		var coords = [];
+	        
+		var rr = 600;
+		for (var xx = 0; xx < rr*2; xx+=50)
+		{
+			var nx = Math.cos(Math.PI*(xx/(rr*2)))*rr;
+			var ny = Math.sqrt(Math.pow(rr,2)-Math.pow(nx,2));
+			coords[coords.length] = {x: nx, y: ny};
+		}
+		for (var xx = rr*2; xx > 0; xx-=50)
+		{
+			var nx = Math.cos(Math.PI*(xx/(rr*2)))*rr;
+			var ny = Math.sqrt(Math.pow(rr,2)-Math.pow(nx,2));
+			coords[coords.length] = {x: nx, y: -ny};
+		}
+		
+		return coords;
+	}
+}
 	
 Player.prototype.work = function()
 {
 	Sprite.prototype.work.call(this);
 	if (sh_p == 1) this.shoot();
+	if (s2_p == 1 && bombs > 0)
+	{
+		this.bomb();
+		bombs -= 1;
+	}
 }
