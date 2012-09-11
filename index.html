@@ -458,7 +458,7 @@ document.onkeydown = function(e)
 	else if (e.keyCode == 39) rg_p = 1;	// right
 	else if (e.keyCode == 40) dw_p = 1;	// down
 	else if (e.keyCode == 90) sh_p = 1;	// z: shot
-	else if (e.keyCode == 88) s2_p = true;	// x: bombs
+	else if (e.keyCode == 88) s2_p = 1;	// x: bombs
 	else if (e.keyCode == 16) sm_p = 1;	// shift: slow
 }
 
@@ -470,7 +470,7 @@ document.onkeyup = function(e)
 	else if (e.keyCode == 39) rg_p = 0;	// right
 	else if (e.keyCode == 40) dw_p = 0;	// down
 	else if (e.keyCode == 90) sh_p = 0;	// z: shot
-	else if (e.keyCode == 88) s2_p = false;	// x: bombs
+	else if (e.keyCode == 88) s2_p = 0;	// x: bombs
 	else if (e.keyCode == 16) sm_p = 0;	// shift: slow
 }
 
