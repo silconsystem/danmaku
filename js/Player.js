@@ -353,7 +353,7 @@ Player.prototype.work = function()
 {
 	Sprite.prototype.work.call(this);
 	if (sh_p == 1) this.shoot();
-	if (s2_p == true && bombs > 0)
+	if (s2_p == 1 && bombs > 0)
 	{
 			s2_p = 0;			
 			bombs -= 1;
