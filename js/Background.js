@@ -45,11 +45,11 @@ Background.prototype.clear = function()
 	
 	if (currentLevel == 1)
 	{
-		img.src = '/game/danmaku/img/bg/mysticbg5.png';		
+		img.src = "/game/danmaku/img/bg/mysticbg5.png";		
 	}
 	else if (currentLevel == 2)
 	{
-		img.src = '/game/danmaku/img/bg/lotusland2.png';
+		img.src = "/game/danmaku/img/bg/lotusland2.png";
 	}	
 	
 	ctx.drawImage(img, 0, moveY);

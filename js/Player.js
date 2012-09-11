@@ -332,15 +332,15 @@ Player.prototype.bomb = function()
 		var coords = [];
 	        
 		var rr = 600;
-		for (var xx = 0; xx < rr*2; xx+=50)
+		for (var xx = 0; xx < rr; xx+=80)
 		{
-			var nx = Math.cos(Math.PI*(xx/(rr*2)))*rr;
+			var nx = Math.cos(Math.PI*(xx/(rr*1.5)))*rr;
 			var ny = Math.sqrt(Math.pow(rr,2)-Math.pow(nx,2));
 			coords[coords.length] = {x: nx, y: ny};
 		}
-		for (var xx = rr*2; xx > 0; xx-=50)
+		for (var xx = rr; xx > 0; xx-=80)
 		{
-			var nx = Math.cos(Math.PI*(xx/(rr*2)))*rr;
+			var nx = Math.cos(Math.PI*(xx/(rr*1.5)))*rr;
 			var ny = Math.sqrt(Math.pow(rr,2)-Math.pow(nx,2));
 			coords[coords.length] = {x: nx, y: -ny};
 		}
@@ -353,9 +353,10 @@ Player.prototype.work = function()
 {
 	Sprite.prototype.work.call(this);
 	if (sh_p == 1) this.shoot();
-	if (s2_p == 1 && bombs > 0)
+	if (s2_p == true && bombs > 0)
 	{
-		this.bomb();
-		bombs -= 1;
+			s2_p = 0;			
+			bombs -= 1;
+			this.bomb();
 	}
 }

@@ -94,7 +94,7 @@ PlayerBomb.prototype.check = function()
 		{
 			b.dead = 1;
 			var p = new Powerup('s');
-			p.addMovement(new Movement(1.5, b.movement.cx, b.movement.cy, b.movement.cx, bg.h));
+			p.addMovement(new Movement(1.5, b.movement.cx, b.movement.cy, pg.movement.cx, pg.movement.cy));
 			powerups[powerups.length] = p;
 			bullets.splice(i,1);
 		}

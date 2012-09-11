@@ -215,7 +215,7 @@ Enemy.prototype.drop = function()
 			if (b instanceof EnemyBullet)
 			{
 				var p = new Powerup('s');
-				p.addMovement(new Movement(1.5, b.movement.cx, b.movement.cy, b.movement.cx, bg.h));
+				p.addMovement(new Movement(10, b.movement.cx, b.movement.cy, b.movement.cx, bg.h));
 				powerups[powerups.length] = p;
 				bullets.splice(i,1);
 			}
