@@ -320,43 +320,81 @@ Player.prototype.bomb = function()
 	// circle bomb
 	
 	var coords = getCircle();
+	
 	for (var i = 0; i < coords.length; i++)
 	{
-	        var b1 = new PlayerBomb();
-	        b1.addMovement(new Movement(2, this.movement.cx, this.movement.cy, Math.round(coords[i].x*2), Math.round(coords[i].y-1200)));
-	        bullets[bullets.length] = b1;
+		var b1 = new PlayerBomb();
+		b1.addMovement(new Movement(2, this.movement.cx, this.movement.cy, Math.round(coords[i].x*2), Math.round(coords[i].y/2)));
+		bullets[bullets.length] = b1;
 	}
-	
-	function getCircle()
+}
+
+Player.prototype.special = function()
+{ 
+	for (var i = 0; i < enemies.length; i++)
 	{
-		var coords = [];
-	        
-		var rr = 600;
-		for (var xx = 0; xx < rr; xx+=80)
-		{
-			var nx = Math.cos(Math.PI*(xx/(rr*1.5)))*rr;
-			var ny = Math.sqrt(Math.pow(rr,2)-Math.pow(nx,2));
-			coords[coords.length] = {x: nx, y: ny};
-		}
-		for (var xx = rr; xx > 0; xx-=80)
-		{
-			var nx = Math.cos(Math.PI*(xx/(rr*1.5)))*rr;
-			var ny = Math.sqrt(Math.pow(rr,2)-Math.pow(nx,2));
-			coords[coords.length] = {x: nx, y: -ny};
-		}
+		var e = enemies[i];
 		
-		return coords;
+		if (e.length == 0)
+		{
+			e.movement = 0;
+		}
+	        
+		var special = new PlayerBullet();
+		var m1 = new Movement(10, this.movement.cx, this.movement.cy, e.movement.cx+40, e.movement.cy+40);
+		special.addMovement(m1);
+		special.image = img_bb1;
+		special.w = 20;
+		special.h = 20;
+		bullets[bullets.length] = special;
+		
 	}
 }
 	
 Player.prototype.work = function()
 {
 	Sprite.prototype.work.call(this);
-	if (sh_p == 1) this.shoot();
-	if (s2_p == true && bombs > 0)
+	if (sh_p == 1)
 	{
-			s2_p = 0;			
-			bombs -= 1;
-			this.bomb();
+		this.shoot()
+		snd_shot1.play();
 	}
+	else if (s2_p == 1 && bombs > 0)
+	{
+		s2_p = 0;			
+		bombs -= 1;
+		this.bomb();
+		snd_shot2.play();
+	}
+	else if (s3_p == 1)
+	{
+		var i = 0;
+		
+		s3_p = 0;
+		spell -= 1;
+		this.special();
+		snd_shot3.play();
+	}
+}
+
+// Math functions
+function getCircle()
+{
+        var coords = [];
+        
+        var rr = 600;
+        for (var xx = 0; xx < rr; xx+=80)
+        {
+	var nx = Math.cos(Math.PI*(xx/(rr*1.5)))*rr;
+	var ny = Math.sqrt(Math.pow(rr,2)-Math.pow(nx,2));
+	coords[coords.length] = {x: nx, y: ny};
+        }
+        for (var xx = rr; xx > 0; xx-=80)
+        {
+	var nx = Math.cos(Math.PI*(xx/(rr*1.5)))*rr;
+	var ny = Math.sqrt(Math.pow(rr,2)-Math.pow(nx,2));
+	coords[coords.length] = {x: nx, y: -ny};
+        }
+        
+        return coords;
 }

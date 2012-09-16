@@ -7,30 +7,30 @@ function generateLevel3()
         
         var e;
         
-        for (var i = 200; i <= 800; i+=50)
+        for (var i = 100; i <= 200; i+=100)
         {
-	e = createEnemy1(i);
-	move001(e);
-	spellCard001(e);
+	e = createEnemy9(i);
+	move011(e);
+	spellCard017(e);	
 	level.addEnemy(e);
         }
         
-        for (var i = 1200; i <= 1400; i+=20)
+        for (var i = 500; i <= 600; i+=100)
         {
-	e = createEnemy1(i);
-	move002a(e);
-	spellCard002(e);
+	e = createEnemy4(i);
+	move012(e);
+	spellCard017(e);
 	level.addEnemy(e);
         }
         
-        for (var i = 1500; i <= 1700; i+=20)
+        for (var i = 1000; i <= 1500; i+=100)
         {
 	e = createEnemy1(i);
 	move002b(e);
 	spellCard002(e);
 	level.addEnemy(e);
         }
-        
+        /*
         for (var i = 1900; i <= 2200; i+=100)
         {
 	e = createEnemy2(i);
@@ -79,11 +79,11 @@ function generateLevel3()
 	level.addEnemy(e);
         }
         
-        e = createEnemy5(5000);
-        move007(e);
-        spellCard009(e);
+        e = createEnemy9(150);
+        move011(e);
+        spellCard017(e);        
         level.addEnemy(e);
-        
+        */        
         return level;
 }
 
@@ -92,17 +92,17 @@ function generateLevel3()
 // ENEMIES
 ////////////////////////////////////////
 
-// return a level 1 enemy, spawning at the specified frame.
-function createEnemy1(d)
+// return a level 1 enemy, spawning coords at the specified frame.
+function createEnemy9(d)
 {
         var e = new Enemy();
         e.level = 1;
         e.life = 6;
-        e.image = img_e1;
+        e.image = img_e4;
         e.delay = d;
         return e;
 }
-
+/*
 // return a level 2 enemy, spawning at the specified frame.
 function createEnemy2(d)
 {
@@ -147,14 +147,14 @@ function createEnemy5(d)
         e.delay = d;
         return e;
 }
-
+*/
 
 ////////////////////////////////////////
 // MOVEMENTS
 ////////////////////////////////////////
-
+/*
 // enter from top, do an X shape, exit from top, random position
-function move001(e)
+function move011(e)
 {
         var rn1 = rand(20, bg.w-20);
         var rn2 = 0;
@@ -169,13 +169,18 @@ function move001(e)
         e.addRelativeMovement(new Movement(1, 0, 0, rn2, rn3));
         e.addRelativeMovement(new Movement(1, 0, 0, rn2, 0));
 }
-
+*/
 // enter from left, exit from right, diagonal direction
-function move002a(e)
+function move011(e)
 {
-        e.addMovement(new Movement(3, 0, 50, bg.w, 100));
+        e.addMovement(new Movement(4, 0, bg.h/2, bg.w, bg.h+100));
 }
 
+function move012(e)
+{
+        e.addMovement(new Movement(4, bg.w, bg.h/2, 0, bg.h+100));
+}
+/*
 // enter from right, exit from left, diagonal direction
 function move002b(e)
 {
@@ -254,32 +259,34 @@ function move007(e)
         e.addLoopingMovement(new Movement(1, 0, 0, bg.w/2+50, 150));
         e.addLoopingMovement(new Movement(1, 0, 0, bg.w/2, 50));
 }
-
+*/
 
 ////////////////////////////////////////
 // SPELLCARDS
 ////////////////////////////////////////
 
 // homing, 3 small shots
-function spellCard001(e)
+function spellCard017(e)
 {
+        
         var s = new SpellCard();
-        s.ts = 120;
+        s.ts = 50;
         
         var coords = getCircle();
         
         for (var i = 0; i < coords.length; i++)
         {
 	var b1 = new EnemyBullet();
-	b1.image = img_b8g;
-	b1.delay = 100;
-	b1.addMovement(new Movement(2, 0, 0, (coords[i].x*2), bg.h));
+	b1.image = img_b8h;
+	b1.delay = 10;
+	b1.homing = 1;
+	b1.addMovement(new Movement(4, 0, 0, coords[i].x, coords[i].y*10));
 	s.addBullet(b1);
         }
         
         e.spellcard = s;
 }
-
+/*
 // homing, 10 small shots
 function spellCard002(e)
 {
@@ -551,25 +558,26 @@ function spellCard009(e)
 ////////////////////////////////////////
 // UTILITIES
 ////////////////////////////////////////
-
+*/
 // returns the coordinates of 18 equidistant points on a circumference
 // centered in 0,0 with radius of 500
 function getCircle()
 {
-        var coords = [];
+	var coords = [];
         
-        var rr = 500;
+	var rr = 1500;
+        
         for (var xx = 0; xx < rr*2; xx+=50)
         {
-	var nx = Math.cos(Math.PI*(xx/(rr*2)))*rr;
-	var ny = Math.sqrt(Math.pow(rr,2)-Math.pow(nx,2));
-	coords[coords.length] = {x: nx, y: ny};
+	        var nx = Math.cos(Math.PI*(xx/(rr*2)))*rr;
+	        var ny = Math.sqrt(Math.pow(rr,2)-Math.pow(nx,2));
+	        coords[coords.length] = {x: nx, y: ny};
         }
         for (var xx = rr*2; xx > 0; xx-=50)
         {
-	var nx = Math.cos(Math.PI*(xx/(rr*2)))*rr;
-	var ny = Math.sqrt(Math.pow(rr,2)-Math.pow(nx,2));
-	coords[coords.length] = {x: nx, y: -ny};
+	        var nx = Math.cos(Math.PI*(xx/(rr*2)))*rr;
+	        var ny = Math.sqrt(Math.pow(rr,2)-Math.pow(nx,2));
+	        coords[coords.length] = {x: nx, y: -ny};
         }
         
         return coords;

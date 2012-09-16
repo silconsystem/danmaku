@@ -104,7 +104,8 @@ Enemy.prototype.shoot = function()
 				var m = new Movement(b.movement.speed, this.movement.cx+b.movement.sx,
 					     this.movement.cy+b.movement.sy, this.movement.cx+b.movement.ex+newxspan,
 					     this.movement.cy+b.movement.ey+newyspan);
-				b.movement = m;					
+				b.movement = m;
+				snd_esht3.play();
 			}
 		    else
 		    {
@@ -112,6 +113,7 @@ Enemy.prototype.shoot = function()
 		    	var m = new Movement(b.movement.speed, this.movement.cx+b.movement.sx, this.movement.cy+b.movement.sy, 
 										this.movement.cx+b.movement.ex, this.movement.cy+b.movement.ey);
 		    	b.movement = m;
+			snd_esht2.play();
 		    }
 		    
 		    bullets[bullets.length] = b;
@@ -215,7 +217,7 @@ Enemy.prototype.drop = function()
 			if (b instanceof EnemyBullet)
 			{
 				var p = new Powerup('s');
-				p.addMovement(new Movement(10, b.movement.cx, b.movement.cy, b.movement.cx, bg.h));
+				p.addMovement(new Movement(10, b.movement.cx, b.movement.cy, pg.movement.cx, pg.movement.cy));
 				powerups[powerups.length] = p;
 				bullets.splice(i,1);
 			}

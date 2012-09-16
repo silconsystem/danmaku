@@ -38,6 +38,8 @@
 			Current Level: <span id="level">0</span><br />
 			Marisa Health: <span id="mh">0</span><br />
 			<br />
+			SpellCard Special: <span id="spell">0</span><br />
+			<br />
 			Onscreen enemies: <span id="oe">0</span><br />
 			Onscreen bullets: <span id="ob">0</span><br />
 			Onscreen powerups: <span id="op">0</span><br />
@@ -66,6 +68,7 @@
 	<img id="ex" src="img/098.png" />
 	<img id="s" src="img/199.png" />
 	<img id="p" src="img/056.png" />
+	<img id="spec" src="img/032.png" />
 	<img id="b6a" src="img/b6a.png" />
 	<img id="b8a" src="img/b8a.png" />
 	<img id="b8b" src="img/b8b.png" />
@@ -88,6 +91,7 @@
 	<img id="b16i" src="img/b16i.png" />
 	<img id="b16j" src="img/b16j.png" />
 	<img id="bp" src="img/bp.png" />
+	<img id="bb1" src="img/bb1.png" />
 	<img id="bb2" src="img/bb2.png" />
 	<img id="pg" src="img/154.png" />
 	<img id="e1" src="img/157.png" />
@@ -147,6 +151,7 @@ var bombs_text = document.getElementById('bombs');
 var graze_text = document.getElementById('grazeplus');
 var total_text = document.getElementById('total');
 var level_text = document.getElementById('level');
+var spell_text = document.getElementById('spell');
 
 var oe_text = document.getElementById('oe');
 var ob_text = document.getElementById('ob');
@@ -192,7 +197,9 @@ var img_bss2 = document.getElementById('bss2');// Kurimi
 // player bullets
 var img_pg = document.getElementById('pg');
 var img_bp = document.getElementById('bp');
+var img_bb1 = document.getElementById('bb1');
 var img_bb2 = document.getElementById('bb2');
+var img_spc = document.getElementById('spec');
 
 var img_ex = document.getElementById('ex');
 
@@ -200,6 +207,7 @@ var img_ex = document.getElementById('ex');
 var now = 0;
 var score = 0;
 var bombs = 3;
+var spell = 10;
 var interval = 0;
 var currentLevel = 1;
 
@@ -207,12 +215,20 @@ var bg = new Background(); // background global variable
 var pg = new Player(); // player global variable
 var level = new Level(); // level global variable
 
-// music
+// Background Music
 var bgm_st1 = new Audio("audio/th06_03.mp3");
-bgm_st1.addEventListener('ended', function() {
-        this.currentTime = 0;
-        this.play();
-}, false);
+// SFX
+var snd_shot1 = new Audio("audio/shot1.mp3"),
+    snd_shot2 = new Audio("audio/shot2.mp3"),
+    snd_shot3 = new Audio("audio/shot3.mp3"),
+    snd_esht1 = new Audio("audio/e_shot1.mp3"),
+    snd_esht2 = new Audio("audio/e_shot2.mp3"),
+    snd_esht3 = new Audio("audio/e_shot3.mp3"),
+    snd_esht4 = new Audio("audio/e_shot4.mp3"),
+    snd_item1 = new Audio("audio/item1.mp3"),
+    snd_item2 = new Audio("audio/item2.mp3"),
+    snd_selct = new Audio("audio/select.mp3"),
+    snd_xpld1 = new Audio("audio/explode.mp3");
 
 bg.clear();
 
@@ -228,6 +244,8 @@ var dw_p = 0;
 var lf_p = 0;
 var rg_p = 0;
 var sh_p = 0;
+var s2_p = 0;
+var s3_p = 0;
 var sm_p = 0;
 
 // function to be called every frame, manages all the gameplay
@@ -300,6 +318,7 @@ function work()
 	total_text.innerHTML = score + graze_score;
 	level_text.innerHTML = currentLevel;
 	bombs_text.innerHTML = bombs;
+	spell_text.innerHTML = spell;
 	
 	        if ((score+graze_score) == 10000000)
 	        {
@@ -359,10 +378,11 @@ function play()
 	rg_p = 0;
 	sh_p = 0;
 	s2_p = 0;
+	s3_p = 0;
 	sm_p = 0;
 		
 	// level handler
-	if (powerups.length == 0 && enemies.length == 0 && bullets.length == 0 && currentLevel == 1)
+	/*if (powerups.length == 0 && enemies.length == 0 && bullets.length == 0 && currentLevel == 1)
 	{
 		echo("STAGE ONE - Open Sesame!");
 		echoAdds("Marisa is curious about her vision and heads off to investigate...");
@@ -379,12 +399,15 @@ function play()
 		pg.health = 10;
 		bombs = 3;
 	}
-	else if (powerups.length == 0 && enemies.length == 0 && bullets.length == 0 && currentLevel == 3)
+	else*/ if (powerups.length == 0 && enemies.length == 0 && bullets.length == 0 && currentLevel == 1)
 	{
 		echo("STAGE THREE - Forest of Magic !");
+		echoAdds("Marisa senses the magic gets stronger near the forest...")
 		level = generateLevel3();
 		pg.health = 10;
 		bombs = 3;
+		//bgm_st1.play();
+		//bgm_st1.loop = true;
 	}
 	else if (powerups.length == 0 && enemies.length == 0 && bullets.length == 0 && currentLevel == 4)
 	{
@@ -458,7 +481,8 @@ document.onkeydown = function(e)
 	else if (e.keyCode == 39) rg_p = 1;	// right
 	else if (e.keyCode == 40) dw_p = 1;	// down
 	else if (e.keyCode == 90) sh_p = 1;	// z: shot
-	else if (e.keyCode == 88) s2_p = true;	// x: bombs
+	else if (e.keyCode == 88) s2_p = 1;	// x: bombs
+	else if (e.keyCode == 67) s3_p = 1;	// c: ??
 	else if (e.keyCode == 16) sm_p = 1;	// shift: slow
 }
 
@@ -470,7 +494,8 @@ document.onkeyup = function(e)
 	else if (e.keyCode == 39) rg_p = 0;	// right
 	else if (e.keyCode == 40) dw_p = 0;	// down
 	else if (e.keyCode == 90) sh_p = 0;	// z: shot
-	else if (e.keyCode == 88) s2_p = false;	// x: bombs
+	else if (e.keyCode == 88) s2_p = 0;	// x: bombs
+	else if (e.keyCode == 67) s3_p = 0;	// c: ??
 	else if (e.keyCode == 16) sm_p = 0;	// shift: slow
 }
 

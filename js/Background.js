@@ -50,7 +50,11 @@ Background.prototype.clear = function()
 	else if (currentLevel == 2)
 	{
 		img.src = "/game/danmaku/img/bg/lotusland2.png";
-	}	
+	}
+	else if (currentLevel == 3)
+	{
+		img.src = "/game/danmaku/img/bg/forest.png";
+	}
 	
 	ctx.drawImage(img, 0, moveY);
 }
