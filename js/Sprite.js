@@ -129,9 +129,9 @@ Sprite.prototype.draw = function()
 Sprite.prototype.area = function()
 {
 	return {
-		x1: this.movement.cx-this.w/3, 
+		x1: this.movement.cx-this.w/3+4, 
 		y1: this.movement.cy-this.h/3, 
-		x2: this.movement.cx+this.w/3, 
+		x2: this.movement.cx+this.w/3-4, 
 		y2: this.movement.cy+this.h/3	        
 	        };
 }

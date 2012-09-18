@@ -17,7 +17,7 @@
 	<br />
 	<div style="width: 800px;">
 		<div style="float: left; width: 550px;">
-			<canvas width="500" height="650" id="canv" style"background-color: #000;"></canvas>
+			<canvas width="500" height="650" id="canv" style"background-color: #000;z-index: 0"></canvas>
 		</div>
 		<div style="float: left;
 		            width: 200px;
@@ -93,16 +93,18 @@
 	<img id="bp" src="img/bp.png" />
 	<img id="bb1" src="img/bb1.png" />
 	<img id="bb2" src="img/bb2.png" />
-	<img id="pg" src="img/154.png" />
+	<img id="pg" src="img/154.png" /><!-- player sprite -->
+	<img id="pg_slw" src="img/154_slow.png" />
 	<img id="e1" src="img/157.png" />
 	<img id="e2" src="img/152.png" />
 	<img id="e3" src="img/153.png" />
 	<img id="e4" src="img/099.png" />
 	<img id="e5" src="img/100.png" /><!-- Boss: Scarlet Devil -->
-	<img id="e6" src="img/161.png" />
-	<img id="e7" src="img/162.png" />
+	<img id="e6" src="img/161.png" /><!-- fairy: blue -->
+	<img id="e7" src="img/162.png" /><!-- fairy: pink -->
 	<img id="bs2" src="img/bs2.png" /><!-- Boss: Keine Kamishirasawa -->
 	<img id="bss2" src="img/bss2.png" /><!-- Boss: Kurimi -->
+	<img id="bss3" src="img/bss3.png" /><!-- Boss: Alice -->
 </div>
 
 </body>
@@ -167,7 +169,7 @@ var img_e1 = document.getElementById('e1');
 var img_e2 = document.getElementById('e2');
 var img_e3 = document.getElementById('e3');
 var img_e4 = document.getElementById('e4');
-var img_e5 = document.getElementById('e5');// Scarlet Devil
+var img_e5 = document.getElementById('e5');		// Scarlet Devil
 var img_e6 = document.getElementById('e6');
 var img_e7 = document.getElementById('e7');
 // bullets
@@ -192,10 +194,12 @@ var img_b16g = document.getElementById('b16g');
 var img_b16h = document.getElementById('b16h');
 var img_b16i = document.getElementById('b16i');
 var img_b16j = document.getElementById('b16j');
-var img_bs2 = document.getElementById('bs2');// Keine Kamishirasawa
-var img_bss2 = document.getElementById('bss2');// Kurimi
+var img_bs2 = document.getElementById('bs2');		// Keine Kamishirasawa
+var img_bss2 = document.getElementById('bss2');		// Kurimi
+var img_bss3 = document.getElementById('bss3');		// Alice Margatroid
 // player bullets
 var img_pg = document.getElementById('pg');
+var img_pg_slw = document.getElementById('pg_slw');
 var img_bp = document.getElementById('bp');
 var img_bb1 = document.getElementById('bb1');
 var img_bb2 = document.getElementById('bb2');
@@ -216,15 +220,20 @@ var pg = new Player(); // player global variable
 var level = new Level(); // level global variable
 
 // Background Music
-var bgm_st1 = new Audio("audio/th06_03.mp3");
+var bgm_st1 = new Audio("audio/bgm_st1.mp3");
 // SFX
-var snd_shot1 = new Audio("audio/shot1.mp3"),
-    snd_shot2 = new Audio("audio/shot2.mp3"),
-    snd_shot3 = new Audio("audio/shot3.mp3"),
+var snd_esht0 = new Audio("audio/shot0.mp3"),
+    snd_esht1 = new Audio("audio/shot1.mp3"),
+    snd_esht2 = new Audio("audio/shot2.mp3"),
+    snd_esht3 = new Audio("audio/shot3.mp3"),
     snd_esht1 = new Audio("audio/e_shot1.mp3"),
     snd_esht2 = new Audio("audio/e_shot2.mp3"),
     snd_esht3 = new Audio("audio/e_shot3.mp3"),
     snd_esht4 = new Audio("audio/e_shot4.mp3"),
+    snd_esht5 = new Audio("audio/e_shot5.mp3"),
+    snd_esht6 = new Audio("audio/e_shot6.mp3"),
+    snd_esht7 = new Audio("audio/e_shot7.mp3"),
+    snd_esht8 = new Audio("audio/e_shot8.mp3"),
     snd_item1 = new Audio("audio/item1.mp3"),
     snd_item2 = new Audio("audio/item2.mp3"),
     snd_selct = new Audio("audio/select.mp3"),

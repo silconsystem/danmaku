@@ -10,8 +10,8 @@
 
 function Background()
 {
-	this.w = canv.width; // screen width
-	this.h = canv.height; // screen height
+	this.w = canv.width; 	// screen width
+	this.h = canv.height;	// screen height
 	
 	this.y = -2298; // background scrolling position
 	
@@ -42,7 +42,7 @@ Background.prototype.clear = function()
 	}
 	
 	var img = new Image();
-	
+	/*
 	if (currentLevel == 1)
 	{
 		img.src = "/game/danmaku/img/bg/mysticbg5.png";		
@@ -51,7 +51,7 @@ Background.prototype.clear = function()
 	{
 		img.src = "/game/danmaku/img/bg/lotusland2.png";
 	}
-	else if (currentLevel == 3)
+	else*/if (currentLevel == /*3*/1)
 	{
 		img.src = "/game/danmaku/img/bg/forest.png";
 	}

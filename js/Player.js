@@ -29,7 +29,14 @@ function Player()
 Player.prototype.move = function()
 {
 	var m = 5; // normal movement
-	if (sm_p == 1) m = 2; // slow movement
+	if (sm_p == 1)
+	{
+		m  = 2;
+		this.image = img_pg_slw;
+	        
+	} else {
+	        	this.image = img_pg;
+	}// slow
 	
 	// diagonal movement
 	if (up_p + dw_p + lf_p + rg_p > 1)
