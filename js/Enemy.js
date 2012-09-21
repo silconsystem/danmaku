@@ -102,7 +102,8 @@ Enemy.prototype.shoot = function()
 				}
 				
 				var m = new Movement(b.movement.speed, this.movement.cx+b.movement.sx,
-					     this.movement.cy+b.movement.sy, this.movement.cx+b.movement.ex+newxspan,
+					     this.movement.cy+b.movement.sy,
+					     this.movement.cx+b.movement.ex+newxspan,
 					     this.movement.cy+b.movement.ey+newyspan);
 				b.movement = m;
 				if (this.level == 1)
@@ -126,8 +127,10 @@ Enemy.prototype.shoot = function()
 		    else
 		    {
 		    	// not homing, enemy position might have changed, so refresh bullet movement adding enemy coords
-		    	var m = new Movement(b.movement.speed, this.movement.cx+b.movement.sx, this.movement.cy+b.movement.sy, 
-										this.movement.cx+b.movement.ex, this.movement.cy+b.movement.ey);
+		    	var m = new Movement(b.movement.speed, this.movement.cx+b.movement.sx,
+				     this.movement.cy+b.movement.sy, 
+				     this.movement.cx+b.movement.ex,
+				     this.movement.cy+b.movement.ey);
 		    	b.movement = m;
 			if (this.level == 1)
 			{

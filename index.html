@@ -3,32 +3,38 @@
 <head>
 	<title>Marisa Danmaku</title>
 	
+	<!-- StyleSheet -->
+	<link rel="stylesheet" type="text/css" href="css/styles.css" />
+	
 	<!-- My Custom Fonts -->
 	<link href='http://fonts.googleapis.com/css?family=Bilbo+Swash+Caps' rel='stylesheet' type='text/css'>
+	<link href='http://fonts.googleapis.com/css?family=Skranji' rel='stylesheet' type='text/css'>
 </head>
 
 <body>
 
-<div align="center">
-	<div style="width: 600px;">
-		<h1 style="color: #3399CC; margin: 2px;">Canvas & Javascript Danmaku Game</h1>
-		<h2 style="color: #CCCCCC; margin: 2px; font-size: 12px;">Simple 2d shooter made entirely with HTML5 canvas and javascript.<br />Developed by Sako &copy; 2010 - freely redistributable and editable.</h2>
-	</div>
-	<br />
-	<div style="width: 800px;">
-		<div style="float: left; width: 550px;">
-			<canvas width="500" height="650" id="canv" style"background-color: #000;z-index: 0"></canvas>
-		</div>
-		<div style="float: left;
-		            width: 200px;
-		            height: 380px;
-		            border: 1px solid #CCCCCC;
-		            text-align: left;
-		            padding: 0px;
-		            font-family: Verdana;
-		            font-size: 10px;">
+<div id="content_wrapper" align="center">
+
+        <div id="header">
+	<h1>
+	<h2>Simple 2d shooter made entirely with HTML5 canvas and javascript.<br />Developed by Sako &copy; 2010 - freely redistributable and editable.</h2>
+        </div><!-- header -->
+	
+        <br />
+        
+        <div id="game_wrapper">
+	
+	<div id="canvas_wrapper">
+	
+		<canvas id="canv" width="500" height="650">No canvas !? You must be using a Microsoft Product.</canvas>
+		
+	</div><!-- canvas_wrapper -->
+		
+	<div id="game_hud">
+		            <b>Informations</b>
 		            
-			<b>Informations</b><br />
+		            <br />
+		            
 			Frame: <span id="frame">0</span><br />
 			Score: <span id="score">0</span><br />
 			Power: <span id="power">0</span><br />
@@ -47,24 +53,31 @@
 			<b>Controls</b><br />
 			Move: arrow keys - Shoot: Z<br />Hold shift for slow movement<br />
 			<br />
-			<input type="button" onClick="javascript:play();" value="Play!" style="width: 120px;" />
+			<input type="button" class="button" onClick="javascript:play();" value="Play!" />
 			<br /><br />
 			<b>Features</b><br />
 			
 			- final destination<br />
 			<br />
 			<br />
-			Total Score: <span id="total">0</span><br />
-		</div>
+			<b><u><font style="color:#dddddd; font-size: 18pt;">Total Score: </font></u></b><span id="total">0</span>
+			
+		             <br />
+		             
+		</div><!-- game_hud -->
 		<div style="clear: both;"></div>
-	</div>
-	<br />
-	<div style="width: 600px;">
+		
+		<div id="footer">
+		
 		Requirements: decent computer and Firefox. Close all other tabs for better performance. 
-	</div>
-</div>
-
-<div style="display: none;">
+		
+		</div><!-- footer -->
+		
+	</div><!-- game_wrapper -->
+	<br />
+	
+</div><!-- content_wrapper -->
+<div id="images" style="display: none;">
 	<img id="ex" src="img/098.png" />
 	<img id="s" src="img/199.png" />
 	<img id="p" src="img/056.png" />
@@ -105,7 +118,7 @@
 	<img id="bs2" src="img/bs2.png" /><!-- Boss: Keine Kamishirasawa -->
 	<img id="bss2" src="img/bss2.png" /><!-- Boss: Kurimi -->
 	<img id="bss3" src="img/bss3.png" /><!-- Boss: Alice -->
-</div>
+</div><!-- images -->
 
 </body>
 
@@ -222,10 +235,10 @@ var level = new Level(); // level global variable
 // Background Music
 var bgm_st1 = new Audio("audio/bgm_st1.mp3");
 // SFX
-var snd_esht0 = new Audio("audio/shot0.mp3"),
-    snd_esht1 = new Audio("audio/shot1.mp3"),
-    snd_esht2 = new Audio("audio/shot2.mp3"),
-    snd_esht3 = new Audio("audio/shot3.mp3"),
+var snd_shot0 = new Audio("audio/shot0.mp3"),
+    snd_shot1 = new Audio("audio/shot1.mp3"),
+    snd_shot2 = new Audio("audio/shot2.mp3"),
+    snd_shot3 = new Audio("audio/shot3.mp3"),
     snd_esht1 = new Audio("audio/e_shot1.mp3"),
     snd_esht2 = new Audio("audio/e_shot2.mp3"),
     snd_esht3 = new Audio("audio/e_shot3.mp3"),
@@ -391,37 +404,40 @@ function play()
 	sm_p = 0;
 		
 	// level handler
-	/*if (powerups.length == 0 && enemies.length == 0 && bullets.length == 0 && currentLevel == 1)
+	if (powerups.length == 0 && enemies.length == 0 && bullets.length == 0 && currentLevel == 1)
 	{
 		echo("STAGE ONE - Open Sesame!");
 		echoAdds("Marisa is curious about her vision and heads off to investigate...");
-		level = generateLevel1();
-		
-		//bgm_st1.play();
-		//bgm_st1.loop = true;
+		level = generateLevel1();		
+		bgm_st1.play();
+		bgm_st1.loop = true;
 	}
 	else if (powerups.length == 0 && enemies.length == 0 && bullets.length == 0 && currentLevel == 2)
 	{
 		echo("STAGE TWO - Lake of Blood!");
 		echoAdds("You decide to check the mistress her garden out yourself...");
-		level = generateLevel2();					
+		level = generateLevel2();
+		bgm_st2.play();
+		bgm_st2.loop = true;
 		pg.health = 10;
 		bombs = 3;
 	}
-	else*/ if (powerups.length == 0 && enemies.length == 0 && bullets.length == 0 && currentLevel == 1)
+	else if (powerups.length == 0 && enemies.length == 0 && bullets.length == 0 && currentLevel == 1)
 	{
 		echo("STAGE THREE - Forest of Magic !");
 		echoAdds("Marisa senses the magic gets stronger near the forest...")
 		level = generateLevel3();
+		bgm_st3.play();
+		bgm_st3.loop = true;		
 		pg.health = 10;
 		bombs = 3;
-		//bgm_st1.play();
-		//bgm_st1.loop = true;
 	}
 	else if (powerups.length == 0 && enemies.length == 0 && bullets.length == 0 && currentLevel == 4)
 	{
 		echo("STAGE FOUR - Human Village!");
 		level = generateLevel4();
+		bgm_st4.play();
+		bgm_st4.loop = true;
 		pg.health = 10;
 		bombs = 3;
 	}
@@ -429,6 +445,8 @@ function play()
 	{
 		echo("THE SHOWDOWN - Scarlet Devil!");
 		level = generateLevel5();
+		bgm_st5.play();
+		bgm_st5.loop = true;
 		pg.health = 10;
 		bombs = 3;
 	}

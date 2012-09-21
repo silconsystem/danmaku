@@ -338,23 +338,17 @@ Player.prototype.bomb = function()
 
 Player.prototype.special = function()
 { 
-	for (var i = 0; i < enemies.length; i++)
-	{
-		var e = enemies[i];
+	var coords = getCircle();
 		
-		if (e.length == 0)
-		{
-			e.movement = 0;
-		}
-	        
+	for (var i = 0; i < coords.length; i++)
+	{	
 		var special = new PlayerBullet();
-		var m1 = new Movement(10, this.movement.cx, this.movement.cy, e.movement.cx+40, e.movement.cy+40);
+		var m1 = new Movement(20, this.movement.cx, this.movement.cy, coords[i].x, coords[i].y);
 		special.addMovement(m1);
 		special.image = img_bb1;
 		special.w = 20;
 		special.h = 20;
 		bullets[bullets.length] = special;
-		
 	}
 }
 	
@@ -373,7 +367,7 @@ Player.prototype.work = function()
 		this.bomb();
 		snd_shot2.play();
 	}
-	else if (s3_p == 1)
+	else if (s3_p == 1 && spell > 0)
 	{
 		var i = 0;
 		

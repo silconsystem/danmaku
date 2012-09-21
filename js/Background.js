@@ -42,7 +42,7 @@ Background.prototype.clear = function()
 	}
 	
 	var img = new Image();
-	/*
+	
 	if (currentLevel == 1)
 	{
 		img.src = "/game/danmaku/img/bg/mysticbg5.png";		
@@ -51,7 +51,7 @@ Background.prototype.clear = function()
 	{
 		img.src = "/game/danmaku/img/bg/lotusland2.png";
 	}
-	else*/if (currentLevel == /*3*/1)
+	else if (currentLevel == /*3*/1)
 	{
 		img.src = "/game/danmaku/img/bg/forest.png";
 	}

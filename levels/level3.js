@@ -312,7 +312,7 @@ function spellCard020(e)
 ////////////////////////////////////////
 
 // returns the coordinates of 18 equidistant points on a circumference
-// centered in 0,0 with radius of 500
+// centered in 0,0 with radius of 100
 function getCircle()
 {
 	var coords = [];

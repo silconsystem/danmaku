@@ -14,10 +14,11 @@ original TODO list:
 
 added at this moment:
 - grazing points, scratching bullets multiplies with scores
-- 2 working levels, level system implemented. currently working on level 3
+- 3 working levels, level system implemented. currently working on level 4
 - 10 health points, restored each defeated level
-- backgrounds and 3 new powerups
-- 6 new enemies with new spellcards
+- backgrounds and 3 new powerups (still working out special spell)
+- 9 new enemies with new spellcards
+- new background music from original TouHou games
 
 TODO list:
 - more spellcards, based on new mathematical formulas(polar coord, lemniscates, floral pattern, etc...)
