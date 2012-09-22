@@ -150,7 +150,7 @@ Enemy.prototype.shoot = function()
 			}
 			else if (this.level == 5)
 			{
-				snd_esht0.play();
+				snd_esht2.play();
 			}
 		    }
 		    

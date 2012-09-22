@@ -16,8 +16,8 @@
 <div id="content_wrapper" align="center">
 
         <div id="header">
-	<h1>
-	<h2>Simple 2d shooter made entirely with HTML5 canvas and javascript.<br />Developed by Sako &copy; 2010 - freely redistributable and editable.</h2>
+	<h1>Simple 2d shooter made entirely with HTML5 canvas and javascript.
+	<h2>Developed by Sako &copy; 2010 - freely redistributable and editable.</h2>
         </div><!-- header -->
 	
         <br />
@@ -51,13 +51,13 @@
 			Onscreen powerups: <span id="op">0</span><br />
 			<br />
 			<b>Controls</b><br />
-			Move: arrow keys - Shoot: Z<br />Hold shift for slow movement<br />
+			Move: arrow keys<br />
+			Shoot: Z<br />
+			Bomb: X<br />
+			Spell: C<br />
+			Slow: L-Shift<br />
 			<br />
 			<input type="button" class="button" onClick="javascript:play();" value="Play!" />
-			<br /><br />
-			<b>Features</b><br />
-			
-			- final destination<br />
 			<br />
 			<br />
 			<b><u><font style="color:#dddddd; font-size: 18pt;">Total Score: </font></u></b><span id="total">0</span>
@@ -69,12 +69,15 @@
 		
 		<div id="footer">
 		
-		Requirements: decent computer and Firefox. Close all other tabs for better performance. 
+		Requirements: decent computer and modern Browser. Close all other tabs for better performance. 
 		
 		</div><!-- footer -->
 		
 	</div><!-- game_wrapper -->
 	<br />
+	
+	<div class="reimu"><img src="img/bg/reimu.png" /></div>
+	<div class="marisa"><img src="img/bg/marisa.png" /></div>
 	
 </div><!-- content_wrapper -->
 <div id="images" style="display: none;">
@@ -234,6 +237,11 @@ var level = new Level(); // level global variable
 
 // Background Music
 var bgm_st1 = new Audio("audio/bgm_st1.mp3");
+var bgm_st2 = new Audio("audio/bgm_st2.mp3");
+var bgm_st3 = new Audio("audio/bgm_st3.mp3");
+var bgm_st4 = new Audio("audio/bgm_st4.mp3");
+var bgm_st5 = new Audio("audio/bgm_st5.mp3");
+
 // SFX
 var snd_shot0 = new Audio("audio/shot0.mp3"),
     snd_shot1 = new Audio("audio/shot1.mp3"),
@@ -410,15 +418,13 @@ function play()
 		echoAdds("Marisa is curious about her vision and heads off to investigate...");
 		level = generateLevel1();		
 		bgm_st1.play();
-		bgm_st1.loop = true;
 	}
 	else if (powerups.length == 0 && enemies.length == 0 && bullets.length == 0 && currentLevel == 2)
 	{
-		echo("STAGE TWO - Lake of Blood!");
-		echoAdds("You decide to check the mistress her garden out yourself...");
+		echo("STAGE TWO - ...!");
+		echoAdds("...");
 		level = generateLevel2();
 		bgm_st2.play();
-		bgm_st2.loop = true;
 		pg.health = 10;
 		bombs = 3;
 	}
@@ -427,8 +433,7 @@ function play()
 		echo("STAGE THREE - Forest of Magic !");
 		echoAdds("Marisa senses the magic gets stronger near the forest...")
 		level = generateLevel3();
-		bgm_st3.play();
-		bgm_st3.loop = true;		
+		bgm_st3.play();		
 		pg.health = 10;
 		bombs = 3;
 	}
@@ -437,7 +442,6 @@ function play()
 		echo("STAGE FOUR - Human Village!");
 		level = generateLevel4();
 		bgm_st4.play();
-		bgm_st4.loop = true;
 		pg.health = 10;
 		bombs = 3;
 	}
@@ -446,7 +450,6 @@ function play()
 		echo("THE SHOWDOWN - Scarlet Devil!");
 		level = generateLevel5();
 		bgm_st5.play();
-		bgm_st5.loop = true;
 		pg.health = 10;
 		bombs = 3;
 	}

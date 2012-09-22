@@ -18,21 +18,21 @@
         border: 0;
 }
 body {
-        background-image: url('../img/bg/floral_bg.jpg');
+        background-image: url('../img/bg/floral2.jpg');
 }
 /* ------------
  * 		HTML Elements
  * 				------------- */
 h1 {
         font-family: 'Skranji', Verdana, sans-serif;
-        font-size: 16pt;
+        font-size: 14pt;
         font-weight: bold;
-        color: #3399CC;
+        color: #0ff;
 }
 
 h2 {
         font-family: 'Skranji', Verdana, sans-serif;
-        font-size: 14pt;
+        font-size: 8pt;
         font-weight: bold;
         color: #fff;
         margin: 2px;
@@ -88,28 +88,51 @@ canvas {
  * 		DIV Styles
  * 				------------- */
 #game_wrapper {
-        margin: 15px;
+        position: absolute;
+        top: 60px;
+        left: 50%;
+        margin-left: -425px;
         padding: 15px;
         background-color: #000;
         border: 2px solid #808080;
         border-radius: 12px;
         width: 850px;
         height: 750px;
+        z-index: 200;
+}
+
+.reimu {
+        position: absolute;
+        top: 350px;
+        left: 40px;
+        /*background: url("../img/bg/reimu.png");*/
+        float: right;
+        z-index: 300;
+}
+
+.marisa {
+        position: absolute;
+        top: 360px;
+        right: 40px;
+        /*background: url("../img/bg/marisa.png");*/
+        float: left;
+        z-index: 300;
 }
 
 #header {
-        font-family: 'Skranji', Verdana, sans-serif;
-        font-size: 12pt;
         width: 600px;
+        margin-top: 0;
+        margin-bottom: 0;
 }
 
 #canvas_wrapper {
         float: left;
         width: 550px;
+        z-index: 200;
 }
 
 #canv {
-        z-index: 1;
+        z-index: 300;
         margin-left: auto;
         margin-right: auto;
 }
@@ -124,6 +147,7 @@ canvas {
         height: 600px;
         border: 2px solid #CCCCCC;
         text-align: left;
+        z-index: 200;
 }
 
 #game_hud span {
