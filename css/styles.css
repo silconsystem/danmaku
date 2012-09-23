@@ -38,10 +38,6 @@ h2 {
         margin: 2px;
 }
 
-span {
-        color: "blue";
-}
-
 input.button {
         width: 120px;
         height: 30px;
@@ -81,9 +77,20 @@ input.button:hover {
 }
 
 canvas {
-        border: 2px solid #808080;
+        position: absolute;
+        border: 2px solid #ccc;
         border-radius: 6px;
+        float: left;
+        display: block;
 }
+
+#bg_canv {
+        z-index: 100;
+}
+#canv {
+        z-index: 200;
+}
+
 /* ------------
  * 		DIV Styles
  * 				------------- */
@@ -94,29 +101,26 @@ canvas {
         margin-left: -425px;
         padding: 15px;
         background-color: #000;
-        border: 2px solid #808080;
+        border: 2px solid #ccc;
         border-radius: 12px;
         width: 850px;
         height: 750px;
-        z-index: 200;
 }
 
 .reimu {
         position: absolute;
         top: 350px;
         left: 40px;
-        /*background: url("../img/bg/reimu.png");*/
         float: right;
-        z-index: 300;
+        z-index: 400;
 }
 
 .marisa {
         position: absolute;
         top: 360px;
         right: 40px;
-        /*background: url("../img/bg/marisa.png");*/
         float: left;
-        z-index: 300;
+        z-index: 400;
 }
 
 #header {
@@ -128,39 +132,73 @@ canvas {
 #canvas_wrapper {
         float: left;
         width: 550px;
-        z-index: 200;
-}
-
-#canv {
-        z-index: 300;
-        margin-left: auto;
-        margin-right: auto;
 }
 
 #game_hud {
+        position: absolute;
+        left: 50%;
+        margin-top: 1px;
+        margin-left: 120px;
+        padding: 10px;
         font-family: 'Bilbo Swash Caps', Verdana, sans-serif;
         font-weight: bold;
         font-size: 14pt;
         color: #fff;
         float: left;
+        display: block;
         width: 250px;
         height: 600px;
-        border: 2px solid #CCCCCC;
+        border: 2px solid #ccc;
         text-align: left;
-        z-index: 200;
 }
 
-#game_hud span {
+span {
+        margin-top: 30px;
         color: #0cf;
         font-family: 'Skranji', Verdana, sans-serif;
         font-size: 12pt;
 }
 
+span#script {
+        color: #fff;
+        font-family: 'Bilbo Swash Caps', Verdana, sans-serif;
+        font-size: 19pt;
+        font-size: bolder;
+        text-align: center;
+        text-shadow: 2px 2px 2px #000;
+}
+
 #footer {
+        position: absolute;
+        top: 660px;
+        left: 50%;
+        margin-left: -375px;
+        padding-top: 15px;
+        width: 750px;
+        height: 150px;
+        border: 2px solid #ccc;
+        border-radius: 3px;
+        background: #000;
         font-family: 'Skranji', Verdana, sans-serif;
         font-size: 12pt;
         color: #fff;
-        width: 600px;
-        margin-top: 20px;
-        margin-bottom: 0;
+        z-index: 500;
+}
+
+div#play_score {
+        position: absolute;
+        top: 610px;
+        left: 50%;
+        margin-left: -140px;
+        width: 255px;
+        height: 30px;
+        padding: 3px;
+        border: 1px solid #ccc;
+        border-radius: 3px;
+        background-color: #000;
+        color: #fff;
+        font-family: 'Bilbo Swash Caps', Verdana, sans-serif;
+        font-size: 15pt;
+        font-weight: bold;
+        z-index: 600;
 }

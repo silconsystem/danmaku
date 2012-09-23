@@ -6,7 +6,7 @@ function generateLevel4()
         var level = new Level();
         
         var e;
-        
+        /*
         for (var i = 200; i <= 800; i+=50)
         {
 	e = createEnemy1(i);
@@ -78,8 +78,8 @@ function generateLevel4()
 	spellCard006(e);
 	level.addEnemy(e);
         }
-        
-        e = createEnemy5(5000);
+        */
+        e = createEnemy15(100);
         move007(e);
         spellCard009(e);
         level.addEnemy(e);
@@ -91,7 +91,7 @@ function generateLevel4()
 ////////////////////////////////////////
 // ENEMIES
 ////////////////////////////////////////
-
+/*
 // return a level 1 enemy, spawning at the specified frame.
 function createEnemy1(d)
 {
@@ -135,13 +135,13 @@ function createEnemy4(d)
         e.delay = d;
         return e;
 }
-
+*/
 // Level 1 Boss: Keine Kamishirasawa
-function createEnemy5(d)
+function createEnemy15(d)
 {
         var e = new Enemy();
         e.level = 5;
-        e.life = 800;
+        e.life = 2200;
         e.w = 48; e.h = 64;
         e.image = img_bs2;
         e.delay = d;

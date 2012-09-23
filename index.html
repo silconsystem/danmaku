@@ -26,7 +26,9 @@
 	
 	<div id="canvas_wrapper">
 	
+		<canvas id="bg_canv" width="500" height="650">No canvas !? You must be using a Microsoft Product.</canvas>
 		<canvas id="canv" width="500" height="650">No canvas !? You must be using a Microsoft Product.</canvas>
+		
 		
 	</div><!-- canvas_wrapper -->
 		
@@ -58,18 +60,22 @@
 			Slow: L-Shift<br />
 			<br />
 			<input type="button" class="button" onClick="javascript:play();" value="Play!" />
-			<br />
-			<br />
-			<b><u><font style="color:#dddddd; font-size: 18pt;">Total Score: </font></u></b><span id="total">0</span>
 			
-		             <br />
+			<div id="play_score">
+			        <b>
+				<u>
+				        <font style="color:#dddddd; font-size: 18pt;">Total Score: </font>
+				</u>
+			        </b>
+			        <span id="total">0</span>
+			</div><!-- play_score -->
 		             
 		</div><!-- game_hud -->
 		<div style="clear: both;"></div>
 		
 		<div id="footer">
 		
-		Requirements: decent computer and modern Browser. Close all other tabs for better performance. 
+		<span id="script"></span> 
 		
 		</div><!-- footer -->
 		
@@ -158,6 +164,9 @@ function extend(childClassOrObject, parentClassOrObject)
 <script type="text/javascript">
 
 // canvas variables
+var bg_canv = document.getElementById('bg_canv');
+var bg_ctx = bg_canv.getContext('2d');
+
 var canv = document.getElementById('canv');
 var ctx = canv.getContext('2d');
 
@@ -170,6 +179,10 @@ var graze_text = document.getElementById('grazeplus');
 var total_text = document.getElementById('total');
 var level_text = document.getElementById('level');
 var spell_text = document.getElementById('spell');
+var script_txt = document.getElementById('script');
+
+// 1st Script
+script_txt.innerHTML = "It was quiet around Marisa Kirisames little house  too quiet and a little boring.<br>There were rumours about humans dissappearing from the village and Marisa had a vision about a powerfull unknown Magic involved<br>Marisa decides to investigate.";
 
 var oe_text = document.getElementById('oe');
 var ob_text = document.getElementById('ob');
@@ -349,7 +362,7 @@ function work()
 	level_text.innerHTML = currentLevel;
 	bombs_text.innerHTML = bombs;
 	spell_text.innerHTML = spell;
-	
+		
 	        if ((score+graze_score) == 10000000)
 	        {
 		        bombs = 3;
@@ -412,7 +425,7 @@ function play()
 	sm_p = 0;
 		
 	// level handler
-	if (powerups.length == 0 && enemies.length == 0 && bullets.length == 0 && currentLevel == 1)
+	/*if (powerups.length == 0 && enemies.length == 0 && bullets.length == 0 && currentLevel == 1)
 	{
 		echo("STAGE ONE - Open Sesame!");
 		echoAdds("Marisa is curious about her vision and heads off to investigate...");
@@ -428,7 +441,7 @@ function play()
 		pg.health = 10;
 		bombs = 3;
 	}
-	else if (powerups.length == 0 && enemies.length == 0 && bullets.length == 0 && currentLevel == 1)
+	else if (powerups.length == 0 && enemies.length == 0 && bullets.length == 0 && currentLevel == 3)
 	{
 		echo("STAGE THREE - Forest of Magic !");
 		echoAdds("Marisa senses the magic gets stronger near the forest...")
@@ -437,13 +450,14 @@ function play()
 		pg.health = 10;
 		bombs = 3;
 	}
-	else if (powerups.length == 0 && enemies.length == 0 && bullets.length == 0 && currentLevel == 4)
+	else*/ if (powerups.length == 0 && enemies.length == 0 && bullets.length == 0 && currentLevel == 1)
 	{
 		echo("STAGE FOUR - Human Village!");
 		level = generateLevel4();
 		bgm_st4.play();
 		pg.health = 10;
 		bombs = 3;
+		script_txt.innerHTML = "Upon reaching the Human Village Marisa found nothing but a place Terrorized by Dragons.<br>An earie athmosphere was in the air here<br>Marisa wonders who or what is up ahead";
 	}
 	else if (powerups.length == 0 && enemies.length == 0 && bullets.length == 0 && currentLevel == 5)
 	{
@@ -460,7 +474,7 @@ function play()
 	}
 	
 	// start main game loop
-	interval = setInterval(work, 16);
+	interval = setInterval(work, 12);
 }
 
 // print a big text in the middle of the screen
