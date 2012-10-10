@@ -16,8 +16,7 @@
 <div id="content_wrapper" align="center">
 
         <div id="header">
-	<h1>Simple 2d shooter made entirely with HTML5 canvas and javascript.
-	<h2>Developed by Sako &copy; 2010 - freely redistributable and editable.</h2>
+	<h1>Marisa Danmaku</h1>
         </div><!-- header -->
 	
         <br />
@@ -26,8 +25,8 @@
 	
 	<div id="canvas_wrapper">
 	
-		<canvas id="bg_canv" width="500" height="650">No canvas !? You must be using a Microsoft Product.</canvas>
-		<canvas id="canv" width="500" height="650">No canvas !? You must be using a Microsoft Product.</canvas>
+		<canvas id="bg_canv" width="500" height="550">No canvas !? You must be using a Microsoft Product.</canvas>
+		<canvas id="canv" width="500" height="550">No canvas !? You must be using a Microsoft Product.</canvas>
 		
 		
 	</div><!-- canvas_wrapper -->
@@ -153,6 +152,7 @@ function extend(childClassOrObject, parentClassOrObject)
 <script type="text/javascript" src="js/Powerup.js"></script>
 <script type="text/javascript" src="js/Explosion.js"></script>
 <script type="text/javascript" src="js/Text.js"></script>
+<script type="text/javascript" src="js/utils.js"></script>
 <!-- Level Engine -->
 <script type="text/javascript" src="js/Level.js"></script>
 <!-- levels -->
@@ -160,6 +160,7 @@ function extend(childClassOrObject, parentClassOrObject)
 <script type="text/javascript" src="levels/level2.js"></script>
 <script type="text/javascript" src="levels/level3.js"></script>
 <script type="text/javascript" src="levels/level4.js"></script>
+<script type="text/javascript" src="levels/level5.js"></script>
 
 <script type="text/javascript">
 
@@ -198,7 +199,6 @@ var img_e1 = document.getElementById('e1');
 var img_e2 = document.getElementById('e2');
 var img_e3 = document.getElementById('e3');
 var img_e4 = document.getElementById('e4');
-var img_e5 = document.getElementById('e5');		// Scarlet Devil
 var img_e6 = document.getElementById('e6');
 var img_e7 = document.getElementById('e7');
 // bullets
@@ -223,6 +223,7 @@ var img_b16g = document.getElementById('b16g');
 var img_b16h = document.getElementById('b16h');
 var img_b16i = document.getElementById('b16i');
 var img_b16j = document.getElementById('b16j');
+var img_e5 = document.getElementById('e5');		// Scarlet Devil
 var img_bs2 = document.getElementById('bs2');		// Keine Kamishirasawa
 var img_bss2 = document.getElementById('bss2');		// Kurimi
 var img_bss3 = document.getElementById('bss3');		// Alice Margatroid
@@ -375,7 +376,7 @@ function work()
 	mh_text.innerHTML = pg.health;
 	gr_text.innerHTML = pg.graze;
 	
-	// handle player death
+	// ------------------------------ handle player death ---------- comment for debug, uncomment for playtesting
 	if (pg.health == 0)
 	{
 		pg.dead = 1;
@@ -425,12 +426,14 @@ function play()
 	sm_p = 0;
 		
 	// level handler
-	/*if (powerups.length == 0 && enemies.length == 0 && bullets.length == 0 && currentLevel == 1)
+	if (powerups.length == 0 && enemies.length == 0 && bullets.length == 0 && currentLevel == 1)
 	{
 		echo("STAGE ONE - Open Sesame!");
 		echoAdds("Marisa is curious about her vision and heads off to investigate...");
 		level = generateLevel1();		
 		bgm_st1.play();
+
+		script_txt.innerHTML = "Marisa decided to hear off to the place that she saw in her dream.<br>She senses that there is a powerfull magician behind this,<br> for a Youkai this magic is way to strong...";
 	}
 	else if (powerups.length == 0 && enemies.length == 0 && bullets.length == 0 && currentLevel == 2)
 	{
@@ -438,8 +441,16 @@ function play()
 		echoAdds("...");
 		level = generateLevel2();
 		bgm_st2.play();
-		pg.health = 10;
-		bombs = 3;
+		if (pg.health < 10)
+		{
+		        pg.health = 10;
+		}
+		else if (bombs < 3)
+		{
+		        bombs = 3;
+		}
+
+		script_txt.innerHTML = "...";
 	}
 	else if (powerups.length == 0 && enemies.length == 0 && bullets.length == 0 && currentLevel == 3)
 	{
@@ -447,25 +458,48 @@ function play()
 		echoAdds("Marisa senses the magic gets stronger near the forest...")
 		level = generateLevel3();
 		bgm_st3.play();		
-		pg.health = 10;
-		bombs = 3;
+		if (pg.health < 10)
+		{
+		        pg.health = 10;
+		}
+		else if (bombs < 3)
+		{
+		        bombs = 3;
+		}
+
+		script_txt.innerHTML = "Theres something strange going on in this place...<br>As the night grew darker the forest seemed to get more dense aswell.<br>Lets find out whats going on here !!";
 	}
-	else*/ if (powerups.length == 0 && enemies.length == 0 && bullets.length == 0 && currentLevel == 1)
+	else if (powerups.length == 0 && enemies.length == 0 && bullets.length == 0 && currentLevel == 4)
 	{
 		echo("STAGE FOUR - Human Village!");
 		level = generateLevel4();
 		bgm_st4.play();
-		pg.health = 10;
-		bombs = 3;
+		if (pg.health < 10)
+		{
+		        pg.health = 10;
+		}
+		else if (bombs < 3)
+		{
+		        bombs = 3;   
+		}
+		
 		script_txt.innerHTML = "Upon reaching the Human Village Marisa found nothing but a place Terrorized by Dragons.<br>An earie athmosphere was in the air here<br>Marisa wonders who or what is up ahead";
 	}
-	else if (powerups.length == 0 && enemies.length == 0 && bullets.length == 0 && currentLevel == 5)
+	else*/ if (powerups.length == 0 && enemies.length == 0 && bullets.length == 0 && currentLevel == /*5*/1 )
 	{
 		echo("THE SHOWDOWN - Scarlet Devil!");
 		level = generateLevel5();
 		bgm_st5.play();
-		pg.health = 10;
-		bombs = 3;
+		if (pg.health < 10)
+		{
+		        pg.health = 10;
+		}
+		else if (bombs < 3)
+		{
+		        bombs = 3;
+		}
+
+		script_txt.innerHTML = "After defeating Alice Marisa found out who was playing with this powerfull magic spells,<br>Remilia Scarlet had come across a rare artifact that boosted her powers.<br>Marisa calls her out to face her in battle and obtain the artifact for herself.";
 	}
 	else if (powerups.length == 0 && enemies.length == 0 && bullets.length == 0 && currentLevel == 6)
 	{

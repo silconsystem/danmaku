@@ -28,10 +28,10 @@ function Player()
 
 Player.prototype.move = function()
 {
-	var m = 5; // normal movement
+	var m = 7; // normal movement
 	if (sm_p == 1)
 	{
-		m  = 2;
+		m  = 3;
 		this.image = img_pg_slw;
 	        
 	} else {

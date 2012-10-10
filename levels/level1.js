@@ -312,64 +312,64 @@ function spellCard002(e)
 // 3 bursts in /|\ shape, 1 big shot followed by 4 small shots
 function spellCard003(e)
 {
-	var s = new SpellCard();
-	s.ts = 150;
+        var s = new SpellCard();
+        s.ts = 150;
 	
-	for (var i = 0; i < 5; i++)
-    {
-		var b1 = new EnemyBullet();
+        for (var i = 0; i < 5; i++)
+        {
+	var b1 = new EnemyBullet();
 		
-		if (i == 0) 
-		{
-			b1.image = img_b16i;
-			b1.w = 16; b1.w = 16;
-		}
-		else
-		{
-			b1.image = img_b8h;
-		}
-		 
-		b1.delay = 100+(i*8);
-		b1.addMovement(new Movement(2, 0, 0, -80, bg.h));
-		
-		s.addBullet(b1);
-		
-		var b2 = new EnemyBullet();
-		
-		if (i == 0) 
-		{
-			b2.image = img_b16i;
-			b2.w = 16; b2.w = 16;
-		}
-		else
-		{
-			b2.image = img_b8h;
-		}
-		 
-		b2.delay = 100+(i*8);
-		b2.addMovement(new Movement(2, 0, 0, 0, bg.h));
-		
-		s.addBullet(b2);
-		
-		var b3 = new EnemyBullet();
-		
-		if (i == 0) 
-		{
-			b3.image = img_b16i;
-			b3.w = 16; b3.w = 16;
-		}
-		else
-		{
-			b3.image = img_b8h;
-		}
-		 
-		b3.delay = 100+(i*8);
-		b3.addMovement(new Movement(2, 0, 0, 80, bg.h));
-		
-		s.addBullet(b3);
+	if (i == 0)
+	{
+		b1.image = img_b16i;
+		b1.w = 16; b1.w = 16;
 	}
+	else
+	{
+		b1.image = img_b8h;
+	}
+	 
+	b1.delay = 100+(i*8);
+	b1.addMovement(new Movement(2, 0, 0, -80, bg.h));
 	
-	e.spellcard = s;
+	s.addBullet(b1);
+	
+	var b2 = new EnemyBullet();
+	
+	if (i == 0)
+	{
+		b2.image = img_b16i;
+		b2.w = 16; b2.w = 16;
+	}
+	else
+	{
+		b2.image = img_b8h;
+	}
+		 
+	b2.delay = 100+(i*8);
+	b2.addMovement(new Movement(2, 0, 0, 0, bg.h));
+	
+	s.addBullet(b2);
+	
+	var b3 = new EnemyBullet();
+	
+	if (i == 0)
+	{
+		b3.image = img_b16i;
+		b3.w = 16; b3.w = 16;
+	}
+	else
+	{
+		b3.image = img_b8h;
+	}
+	 
+	b3.delay = 100+(i*8);
+	b3.addMovement(new Movement(2, 0, 0, 80, bg.h));
+	
+	s.addBullet(b3);
+        }
+        
+        e.spellcard = s;
 }
 
 // homing, cloud of bullets
@@ -379,7 +379,7 @@ function spellCard004(e)
 	s.ts = 80;
 	
 	for (var i = 0; i < 30; i++)
-    {
+	{
 		var b1 = new EnemyBullet();
 		b1.image = img_b8d;
 		b1.delay = i;
@@ -491,7 +491,7 @@ function spellCard009(e)
 	
 	var coords = getCircle();
 	var c1 = 0, c2 = 10, c3 = 20, c4 = 30;
-	for (var i = 0; i < 80; i++)
+	for (var i = 0; i < 60; i++)
 	{
 		c1++;
 		c1 = c1%coords.length;
@@ -547,31 +547,4 @@ function spellCard009(e)
 	}
 	
 	e.spellcard = s;
-}
-
-////////////////////////////////////////
-// UTILITIES
-////////////////////////////////////////
-
-// returns the coordinates of 18 equidistant points on a circumference
-// centered in 0,0 with radius of 500
-function getCircle()
-{
-	var coords = [];
-	
-	var rr = 500;
-	for (var xx = 0; xx < rr*2; xx+=50)
-	{
-		var nx = Math.cos(Math.PI*(xx/(rr*2)))*rr;
-		var ny = Math.sqrt(Math.pow(rr,2)-Math.pow(nx,2));
-		coords[coords.length] = {x: nx, y: ny};
-	}
-	for (var xx = rr*2; xx > 0; xx-=50)
-	{
-		var nx = Math.cos(Math.PI*(xx/(rr*2)))*rr;
-		var ny = Math.sqrt(Math.pow(rr,2)-Math.pow(nx,2));
-		coords[coords.length] = {x: nx, y: -ny};
-	}
-	
-	return coords;
 }

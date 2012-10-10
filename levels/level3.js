@@ -102,7 +102,7 @@ function move011(e)
 }
 
 function move012(e)
-{07
+{
         e.addMovement(new Movement(4, bg.w, bg.h/2, 0, bg.h-100));
 }
 
@@ -113,7 +113,7 @@ function move011a(e)
 }
 
 function move012b(e)
-{07
+{
 e.addMovement(new Movement(4, bg.w, bg.h-600, 0, bg.h-100));
 }
 
@@ -305,32 +305,4 @@ function spellCard020(e)
         }
         
         e.spellcard = s;
-}
-
-////////////////////////////////////////
-// UTILITIES
-////////////////////////////////////////
-
-// returns the coordinates of 18 equidistant points on a circumference
-// centered in 0,0 with radius of 100
-function getCircle()
-{
-	var coords = [];
-        
-	var rr = 100;
-        
-        for (var xx = 0; xx < rr*2; xx+=50)
-        {
-	        var nx = Math.cos(Math.PI*(xx/(rr*2)))*rr;
-	        var ny = Math.sqrt(Math.pow(rr,2)-Math.pow(nx,2));
-	        coords[coords.length] = {x: nx, y: ny};
-        }
-        for (var xx = rr*2; xx > 0; xx-=50)
-        {
-	        var nx = Math.cos(Math.PI*(xx/(rr*2)))*rr;
-	        var ny = Math.sqrt(Math.pow(rr,2)-Math.pow(nx,2));
-	        coords[coords.length] = {x: nx, y: -ny};
-        }
-        
-        return coords;
 }

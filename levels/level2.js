@@ -324,7 +324,7 @@ function spellCard014(e)
         s.ts = 125;
         
         var coords = getCircle();
-        var c1 = 0, c2 = 10, c3 = 20, c4 = 30;
+        var c1 = 0, c2 = 10;
         
         for (var i = 0; i < coords.length; i++)
         {
@@ -432,31 +432,4 @@ function spellCard016(e)
         }
         
         e.spellcard = s;
-}
-
-////////////////////////////////////////
-// UTILITIES
-////////////////////////////////////////
-
-// returns the coordinates of 18 equidistant points on a circumference
-// centered in 0,0 with radius of 500
-function getCircle()
-{
-        var coords = [];
-        
-        var rr = 500;
-        for (var xx = 0; xx < rr*2; xx+=50)
-        {
-	var nx = Math.cos(Math.PI*(xx/(rr*2)))*rr;
-	var ny = Math.sqrt(Math.pow(rr,2)-Math.pow(nx,2));
-	coords[coords.length] = {x: nx, y: ny};
-        }
-        for (var xx = rr*2; xx > 0; xx-=50)
-        {
-	var nx = Math.cos(Math.PI*(xx/(rr*2)))*rr;
-	var ny = Math.sqrt(Math.pow(rr,2)-Math.pow(nx,2));
-	coords[coords.length] = {x: nx, y: -ny};
-        }
-        
-        return coords;
 }
