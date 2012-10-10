@@ -36,7 +36,7 @@ Player.prototype.move = function()
 	        
 	} else {
 	        	this.image = img_pg;
-	}// slow
+	} // slow
 	
 	// diagonal movement
 	if (up_p + dw_p + lf_p + rg_p > 1)
@@ -53,7 +53,7 @@ Player.prototype.move = function()
 		this.movement.cx += m;
 	
 	// avoid going out of the screen
-	if (this.movement.cx >= bg.w - bg.padding) 
+	if (this.movement.cx >= bg.w - bg.padding)
 		this.movement.cx = bg.w - bg.padding;
 	if (this.movement.cx <= bg.padding) 
 		this.movement.cx = bg.padding;
@@ -61,6 +61,7 @@ Player.prototype.move = function()
 		this.movement.cy = bg.h - bg.padding;
 	if (this.movement.cy <= bg.padding)
 		this.movement.cy = bg.padding;
+	
 }
 
 // fire bullets
@@ -324,8 +325,7 @@ Player.prototype.shoot = function()
 }
 Player.prototype.bomb = function()
 {
-	// circle bomb
-	
+	// circle bomb	
 	var coords = getCircle();
 	
 	for (var i = 0; i < coords.length; i++)
@@ -338,16 +338,12 @@ Player.prototype.bomb = function()
 
 Player.prototype.special = function()
 { 
-	var coords = getCircle();
+	var coords = getSpiral();
 		
 	for (var i = 0; i < coords.length; i++)
 	{	
-		var special = new PlayerBullet();
-		var m1 = new Movement(20, this.movement.cx, this.movement.cy, coords[i].x, coords[i].y);
-		special.addMovement(m1);
-		special.image = img_bb1;
-		special.w = 20;
-		special.h = 20;
+		var special = new PlayerSpell();
+		special.addMovement(new Movement(3, this.movement.cx, this.movement.cy, Math.round(coords[i].x), Math.round(coords[i].y)));
 		bullets[bullets.length] = special;
 	}
 }
@@ -376,26 +372,4 @@ Player.prototype.work = function()
 		this.special();
 		snd_shot3.play();
 	}
-}
-
-// Math functions
-function getCircle()
-{
-        var coords = [];
-        
-        var rr = 600;
-        for (var xx = 0; xx < rr; xx+=80)
-        {
-	var nx = Math.cos(Math.PI*(xx/(rr*1.5)))*rr;
-	var ny = Math.sqrt(Math.pow(rr,2)-Math.pow(nx,2));
-	coords[coords.length] = {x: nx, y: ny};
-        }
-        for (var xx = rr; xx > 0; xx-=80)
-        {
-	var nx = Math.cos(Math.PI*(xx/(rr*1.5)))*rr;
-	var ny = Math.sqrt(Math.pow(rr,2)-Math.pow(nx,2));
-	coords[coords.length] = {x: nx, y: -ny};
-        }
-        
-        return coords;
 }

@@ -33,7 +33,7 @@ Background.prototype.draw = function()
         }
         
         var img = new Image();
-        /*
+        
         if (currentLevel == 1)
         {
 	img.src = "/game/danmaku/img/bg/mysticbg5.png";		
@@ -46,9 +46,13 @@ Background.prototype.draw = function()
         {
 	img.src = "/game/danmaku/img/bg/forest.png";
         }
-        else */if (currentLevel == /*4*/1)
+        else if (currentLevel == 4)
         {
 	img.src = "/game/danmaku/img/bg/village.jpg";
+        }
+        else if (currentLevel == 5)
+        {
+	img.src = "/game/danmaku/img/bg/mysticbg5.png";
         }
         
         bg_ctx.drawImage(img, 0, moveY);

@@ -43,7 +43,7 @@ Powerup.prototype.check = function()
 		}
 		else if (this.type == 's')
 		{
-			score += 12500;
+			score += 1200;
 			snd_item2.play();
 		}
 		

@@ -38,7 +38,7 @@ EnemyBullet.prototype.check = function()
 	}
 	else if (area_overlap(this.graze_area(), pg.area()))
 	{
-		pg.graze += 2;
+		pg.graze += 1;
 	}
 }
 

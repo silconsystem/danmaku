@@ -113,7 +113,7 @@ function spellCard021(e)
 	}
 
 	for (var j = 0; j < coordsB.length; j++)
-	{	
+	{
 	        var b4c = new EnemyBullet();
 	        b4c.image = img_b16b;
 	        b4c.delay = 88;
@@ -129,16 +129,15 @@ function spellCard021(e)
 	        var b5 = new EnemyBullet();
 	        b5.image = img_b16c;
 	        b5.delay = 120;
-	        b5.addMovement(new Movement(2, 0, 0, (coords[j].x*2), bg.h));
+	        b5.addMovement(new Movement(2, 0, 0, (coords[j].x), bg.h));
 	        s.addBullet(b5);
 
 	        var b5a = new EnemyBullet();
 	        b5a.image = img_b16c;
 	        b5a.delay = 120;
-	        b5a.addMovement(new Movement(2, 0, 0, (coords[j].x*2), bg.h));
+	        b5a.addMovement(new Movement(2, 0, 0, (coords[j].x), bg.h));
 	        s.addBullet(b5);
-	}
-	
+	}	
         }        
         e.spellcard = s;
 }

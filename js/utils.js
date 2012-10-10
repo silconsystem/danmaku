@@ -46,3 +46,24 @@ function getDenseCircle()
 
         return coords;
 }
+
+function getSpiral()
+{
+        var centerX = pg.movement.cx;
+        var centerY = pg.movement.cy;
+        var a = 6;
+        var b = 2;
+
+        var coords = [];
+
+        for (var i = 0; i < 500; i+=10)
+        {
+	var angle = 0.7 * i;
+
+	var nx = centerX + (a + b * angle) * Math.cos(angle);
+	var ny = centerY + (a + b * angle) * Math.sin(angle);
+	coords[coords.length] = {x: nx, y: ny};
+        }
+
+        return coords;
+}

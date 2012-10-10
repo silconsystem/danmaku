@@ -32,37 +32,37 @@ function Enemy()
 
 Enemy.prototype.check = function()
 {
-	Sprite.prototype.check.call(this);
+        Sprite.prototype.check.call(this);
 	
-	// enemy has been hit
-	if (this.hit == 1)
+        // enemy has been hit
+        if (this.hit == 1)
+        {
+	this.hit = 0;
+	this.life -= 1;
+        }
+	
+	// enemy has been shot to death
+	if (this.life <= 0)
 	{
-		this.hit = 0;
-		this.life -= 1;
-	}
-	
-    // enemy has been shot to death
-    if (this.life <= 0)
-    {
-		score += (this.level*this.level*10);
-		this.dead = 1;
-		this.drop();
+	        score += (this.level*this.level*10);
+	        this.dead = 1;
+	        this.drop();
 		
-		for (var i = 0; i <= this.level; i++)
-		{
-			var e = new Explosion();
-			var m = new Movement(0, this.movement.cx+rand(-8,8), this.movement.cy+rand(-8,8), 0, 0);
-			m.tl = 25;
-			e.addMovement(m);
-			others[others.length] = e;
-		}
-    }
-    
-	// enemy is colliding with the player
-	if (area_overlap(this.area(), pg.area()))
-	{
-		pg.health -= 1;
+	        for (var i = 0; i <= this.level; i++)
+	        {
+		var e = new Explosion();
+		var m = new Movement(0, this.movement.cx+rand(-8,8), this.movement.cy+rand(-8,8), 0, 0);
+		m.tl = 25;
+		e.addMovement(m);
+		others[others.length] = e;
+	        }
 	}
+    
+        // enemy is colliding with the player
+        if (area_overlap(this.area(), pg.area()))
+        {
+	pg.health -= 1;
+        }
 }
 
 // fire bullets
@@ -75,9 +75,9 @@ Enemy.prototype.shoot = function()
 		
 		for (var i = 0; i < fired.length; i++)
 		{
-		    var b = fired[i];
+			var b = fired[i];
 		    
-		    if (b.homing == 1)
+			if (b.homing == 1)
 			{
 				// homing bullet, recalculate direction
 				var xspan = pg.movement.cx-this.movement.cx;
@@ -124,8 +124,8 @@ Enemy.prototype.shoot = function()
 				}
 				
 			}
-		    else
-		    {
+			else
+			{
 		    	// not homing, enemy position might have changed, so refresh bullet movement adding enemy coords
 		    	var m = new Movement(b.movement.speed, this.movement.cx+b.movement.sx,
 				     this.movement.cy+b.movement.sy, 

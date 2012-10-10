@@ -2,6 +2,8 @@ JavaScript Danmaku Game,
 
 The source of this project can be found at: http://www.kikya.com/danmaku/
 Credit goes to Sako (zomgsako@gmail.com) for writing the engine for this game,
+to follow the development view a working demo here:
+http://marisa.byethost11.com
 
 I took on the challenge of writing the missing game elements.
 
@@ -14,11 +16,12 @@ original TODO list:
 
 added at this moment:
 - grazing points, scratching bullets multiplies with scores
-- 3 working levels, level system implemented. currently working on level 4
+- 4 working levels, level system implemented. currently working on level 4
 - 10 health points, restored each defeated level
-- backgrounds and 3 new powerups (still working out special spell)
+- backgrounds and 3 new powerups: 6 weapon upgrades, bombs and spiralspellcard
 - 9 new enemies with new spellcards
 - new background music from original TouHou games
+- started script implementation
 
 TODO list:
 - more spellcards, based on new mathematical formulas(polar coord, lemniscates, floral pattern, etc...)
