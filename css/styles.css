@@ -87,8 +87,11 @@ canvas {
 #bg_canv {
         z-index: 100;
 }
-#canv {
+#fx1canv {
         z-index: 200;
+}
+#canv {
+        z-index: 300;
 }
 
 /* ------------
@@ -106,7 +109,11 @@ canvas {
         width: 850px;
         height: 750px;
 }
-
+/* TODO got some images that lie on top of the game screen, not looking like much yet
+ * but will create a Touhou like background effect later when I can start the layout
+ * with css and html(wich I'm better at than coding) forgive me for the crappy
+ * layout you're seeing now
+ 
 .reimu {
         position: absolute;
         top: 570px;
@@ -124,7 +131,7 @@ canvas {
         float: left;
         z-index: 400;
 }
-
+*/
 #header {
         width: 600px;
         height: 30px;

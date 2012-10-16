@@ -28,7 +28,8 @@
 	
 	<div id="canvas_wrapper">
 	
-		<canvas id="bg_canv" width="500" height="550">No canvas !? You must be using a Microsoft Product.</canvas>
+		<canvas id="bg_canv" width="500" height="550"></canvas>
+		<canvas id="fx1canv" width="500" height="555"></canvas>
 		<canvas id="canv" width="500" height="550">No canvas !? You must be using a Microsoft Product.</canvas>
 		
 		
@@ -62,6 +63,7 @@
 			Slow: L-Shift<br />
 			<br />
 			<input type="button" class="button" onClick="javascript:play();" value="Play!" />
+			<input type="button" class="button" onClick="javascript:stop();" value="Stop!" />
 			
 			<div id="play_score">
 			        <b>
@@ -89,7 +91,7 @@
 	
 </div><!-- content_wrapper -->
 <div id="images" style="display: none;">
-	<img id="ex" src="img/098.png" />
+	<img id="ex" src="img/098.png" />	<!-- enemy bullets -->
 	<img id="s" src="img/199.png" />
 	<img id="p" src="img/056.png" />
 	<img id="spec" src="img/032.png" />
@@ -114,21 +116,22 @@
 	<img id="b16h" src="img/b16h.png" />
 	<img id="b16i" src="img/b16i.png" />
 	<img id="b16j" src="img/b16j.png" />
-	<img id="bp" src="img/bp.png" />
-	<img id="bb1" src="img/bb1.png" />
-	<img id="bb2" src="img/bb2.png" />
-	<img id="pg" src="img/154.png" /><!-- player sprite -->
-	<img id="pg_slw" src="img/154_slow.png" />
-	<img id="e1" src="img/157.png" />
+	<img id="bp" src="img/bp.png" />	<!-- player bullet -->
+	<img id="bpA" src="img/bpA.png" />	<!-- player powerup bullet blue -->
+	<img id="bb1" src="img/bb1.png" />	<!-- player spell bullet -->
+	<img id="bb2" src="img/bb2.png" />	<!-- player powerup bullet grey -->
+	<img id="pg" src="img/154.png" />	<!-- player sprite -->
+	<img id="pg_slw" src="img/154_slow.png" />	<!-- player sprite 'slow' -->
+	<img id="e1" src="img/157.png" />	<!-- enemy sprites -->
 	<img id="e2" src="img/152.png" />
 	<img id="e3" src="img/153.png" />
 	<img id="e4" src="img/099.png" />
-	<img id="e5" src="img/100.png" /><!-- Boss: Scarlet Devil -->
-	<img id="e6" src="img/161.png" /><!-- fairy: blue -->
-	<img id="e7" src="img/162.png" /><!-- fairy: pink -->
-	<img id="bs2" src="img/bs2.png" /><!-- Boss: Keine Kamishirasawa -->
-	<img id="bss2" src="img/bss2.png" /><!-- Boss: Kurimi -->
-	<img id="bss3" src="img/bss3.png" /><!-- Boss: Alice -->
+	<img id="e5" src="img/100.png" />	<!-- Boss: Scarlet Devil -->
+	<img id="e6" src="img/161.png" />	<!-- fairy: blue -->
+	<img id="e7" src="img/162.png" />	<!-- fairy: pink -->
+	<img id="bs2" src="img/bs2.png" />	<!-- Boss: Keine Kamishirasawa -->
+	<img id="bss2" src="img/bss2.png" />	<!-- Boss: Kurimi -->
+	<img id="bss3" src="img/bss3.png" />	<!-- Boss: Alice -->
 </div><!-- images -->
 
 </body>
@@ -170,6 +173,9 @@ function extend(childClassOrObject, parentClassOrObject)
 // canvas variables
 var bg_canv = document.getElementById('bg_canv');
 var bg_ctx = bg_canv.getContext('2d');
+
+var fx1canv = document.getElementById('fx1canv');
+var fx1canv = fx1canv.getContext('2d');
 
 var canv = document.getElementById('canv');
 var ctx = canv.getContext('2d');
@@ -230,13 +236,13 @@ var img_e5 = document.getElementById('e5');		// Scarlet Devil
 var img_bs2 = document.getElementById('bs2');		// Keine Kamishirasawa
 var img_bss2 = document.getElementById('bss2');		// Kurimi
 var img_bss3 = document.getElementById('bss3');		// Alice Margatroid
-// player bullets
-var img_pg = document.getElementById('pg');
-var img_pg_slw = document.getElementById('pg_slw');
-var img_bp = document.getElementById('bp');
-var img_bb1 = document.getElementById('bb1');
-var img_bb2 = document.getElementById('bb2');
-var img_spc = document.getElementById('spec');
+var img_pg = document.getElementById('pg');		// player sprite
+var img_pg_slw = document.getElementById('pg_slw');	// slow movement, show hitbox
+var img_bp = document.getElementById('bp');		// player bullet
+var img_bpA = document.getElementById('bpA');		// player bullet powerup blue
+var img_bb1 = document.getElementById('bb1');		// spell bullet big
+var img_bb2 = document.getElementById('bb2');		// spell bullet grey
+var img_spc = document.getElementById('spec');		// spell special bullet
 
 var img_ex = document.getElementById('ex');
 
@@ -248,9 +254,9 @@ var spell = 10;
 var interval = 0;
 var currentLevel = 1;
 
-var bg = new Background(); // background global variable 
-var pg = new Player(); // player global variable
-var level = new Level(); // level global variable
+var bg = new Background();	 // background global variable 
+var pg = new Player();	 // player global variable
+var level = new Level();	 // level global variable
 
 // Background Music
 var bgm_st1 = new Audio("audio/bgm_st1.mp3");
@@ -597,6 +603,13 @@ document.onkeyup = function(e)
 	else if (e.keyCode == 88) s2_p = 0;	// x: bombs
 	else if (e.keyCode == 67) s3_p = 0;	// c: special
 	else if (e.keyCode == 16) sm_p = 0;	// shift: slow
+}
+
+// stop the game
+function stop()
+{
+	clearInterval(interval);
+	script_txt.innerHTML = "the game has stopped";
 }
 
 </script>

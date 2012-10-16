@@ -23,12 +23,12 @@ function Player()
 	this.movements = [];
 	this.movement = null;
 	
-	this.power = 0; // Marisa's shooting power
+	this.power = 0; 	// Marisa's shooting power
 }
 
 Player.prototype.move = function()
 {
-	var m = 7; // normal movement
+	var m = 7; 		// normal movement
 	if (sm_p == 1)
 	{
 		m  = 3;
@@ -66,7 +66,7 @@ Player.prototype.move = function()
 
 // fire bullets
 Player.prototype.shoot = function()
-{	
+{        
 	if (this.power < 10)
 	{
 		var b1 = new PlayerBullet();
@@ -121,12 +121,12 @@ Player.prototype.shoot = function()
 	else if (this.power < 40)
 	{
 		var b1 = new PlayerBullet();
-		var m1 = new Movement(25, this.movement.cx-12, this.movement.cy, this.movement.cx-30, -10);
+		var m1 = new Movement(25, this.movement.cx-12, this.movement.cy, this.movement.cx-35, -10);
 		b1.addMovement(m1);
 		bullets[bullets.length] = b1;
 		
 		var b2 = new PlayerBullet();
-		var m2 = new Movement(25, this.movement.cx+12, this.movement.cy, this.movement.cx+30, -10);
+		var m2 = new Movement(25, this.movement.cx+12, this.movement.cy, this.movement.cx+35, -10);
 		b2.addMovement(m2);
 		bullets[bullets.length] = b2;
 		
@@ -150,7 +150,7 @@ Player.prototype.shoot = function()
 		var b1 = new PlayerBullet();
 		var m1 = new Movement(25, this.movement.cx-40, this.movement.cy, this.movement.cx-80, -10);
 		b1.addMovement(m1);
-		b1.image = img_b6a;
+		b1.image = img_bb2;
 		b1.w = 10;
 		b1.h = 10;
 		bullets[bullets.length] = b1;
@@ -158,18 +158,18 @@ Player.prototype.shoot = function()
 		var b2 = new PlayerBullet();
 		var m2 = new Movement(25, this.movement.cx+40, this.movement.cy, this.movement.cx+80, -10);
 		b2.addMovement(m2);
-		b2.image = img_b6a;
+		b2.image = img_bb2;
 		b2.w = 10;
 		b2.h = 10;
 		bullets[bullets.length] = b2;
 	        
 		var b1 = new PlayerBullet();
-		var m1 = new Movement(25, this.movement.cx-14, this.movement.cy, this.movement.cx-30, -10);
+		var m1 = new Movement(25, this.movement.cx-14, this.movement.cy, this.movement.cx-35, -10);
 		b1.addMovement(m1);
 		bullets[bullets.length] = b1;
 	        
 		var b2 = new PlayerBullet();
-		var m2 = new Movement(25, this.movement.cx+14, this.movement.cy, this.movement.cx+30, -10);
+		var m2 = new Movement(25, this.movement.cx+14, this.movement.cy, this.movement.cx+35, -10);
 		b2.addMovement(m2);
 		bullets[bullets.length] = b2;
 	        
@@ -191,17 +191,17 @@ Player.prototype.shoot = function()
 	else if (this.power < 60)
 	{
 		var b1 = new PlayerBullet();
-		var m1 = new Movement(25, this.movement.cx-46, this.movement.cy, this.movement.cx-86, -10);
+		var m1 = new Movement(25, this.movement.cx-46, this.movement.cy, this.movement.cx-90, -10);
 		b1.addMovement(m1);
-		b1.image = img_b6a;
+		b1.image = img_bpA;
 		b1.w = 6;
 		b1.h = 16;
 		bullets[bullets.length] = b1;
 		
 		var b2 = new PlayerBullet();
-		var m2 = new Movement(25, this.movement.cx+46, this.movement.cy, this.movement.cx+86, -10);
+		var m2 = new Movement(25, this.movement.cx+46, this.movement.cy, this.movement.cx+90, -10);
 		b2.addMovement(m2);
-		b2.image = img_b6a;
+		b2.image = img_bpA;
 		b2.w = 6;
 		b2.h = 16;
 		bullets[bullets.length] = b2;
@@ -209,7 +209,7 @@ Player.prototype.shoot = function()
 		var b1 = new PlayerBullet();
 		var m1 = new Movement(25, this.movement.cx-40, this.movement.cy, this.movement.cx-80, -10);
 		b1.addMovement(m1);
-		b1.image = img_b6a;
+		b1.image = img_bb2;
 		b1.w = 6;
 		b1.h = 16;
 		bullets[bullets.length] = b1;
@@ -217,18 +217,18 @@ Player.prototype.shoot = function()
 		var b2 = new PlayerBullet();
 		var m2 = new Movement(25, this.movement.cx+40, this.movement.cy, this.movement.cx+80, -10);
 		b2.addMovement(m2);
-		b2.image = img_b6a;
+		b2.image = img_bb2;
 		b2.w = 6;
 		b2.h = 16;
 		bullets[bullets.length] = b2;
 	        
 		var b1 = new PlayerBullet();
-		var m1 = new Movement(25, this.movement.cx-14, this.movement.cy, this.movement.cx-30, -10);
+		var m1 = new Movement(25, this.movement.cx-14, this.movement.cy, this.movement.cx-35, -10);
 		b1.addMovement(m1);
 		bullets[bullets.length] = b1;
 	        
 		var b2 = new PlayerBullet();
-		var m2 = new Movement(25, this.movement.cx+14, this.movement.cy, this.movement.cx+30, -10);
+		var m2 = new Movement(25, this.movement.cx+14, this.movement.cy, this.movement.cx+35, -10);
 		b2.addMovement(m2);
 		bullets[bullets.length] = b2;
 	        
@@ -250,60 +250,60 @@ Player.prototype.shoot = function()
 	else if (this.power >= 60)
 	{
 		var b1 = new PlayerBullet();
-		var m1 = new Movement(25, this.movement.cx-52, this.movement.cy, this.movement.cx-92, -10);
+		var m1 = new Movement(25, this.movement.cx-52, this.movement.cy, this.movement.cx-115, -10);
 		b1.addMovement(m1);
-		b1.image = img_b6a;
+		b1.image = img_bpA;
 		b1.w = 6;
 		b1.h = 16;
 		bullets[bullets.length] = b1;
 	        
 		var b2 = new PlayerBullet();
-		var m2 = new Movement(25, this.movement.cx+52, this.movement.cy, this.movement.cx+92, -10);
+		var m2 = new Movement(25, this.movement.cx+52, this.movement.cy, this.movement.cx+115, -10);
 		b2.addMovement(m2);
-		b2.image = img_b6a;
+		b2.image = img_bpA;
 		b2.w = 6;
 		b2.h = 16;
 		bullets[bullets.length] = b2;
 	        
 		var b1 = new PlayerBullet();
-		var m1 = new Movement(25, this.movement.cx-46, this.movement.cy, this.movement.cx-86, -10);
+		var m1 = new Movement(25, this.movement.cx-46, this.movement.cy, this.movement.cx-90, -10);
 		b1.addMovement(m1);
-		b1.image = img_b6a;
+		b1.image = img_bpA;
 		b1.w = 6;
 		b1.h = 16;
 		bullets[bullets.length] = b1;
 	        
 		var b2 = new PlayerBullet();
-		var m2 = new Movement(25, this.movement.cx+46, this.movement.cy, this.movement.cx+86, -10);
+		var m2 = new Movement(25, this.movement.cx+46, this.movement.cy, this.movement.cx+90, -10);
 		b2.addMovement(m2);
-		b2.image = img_b6a;
+		b2.image = img_bb2;
 		b2.w = 6;
 		b2.h = 16;
 		bullets[bullets.length] = b2;
 	        
 		var b1 = new PlayerBullet();
-		var m1 = new Movement(25, this.movement.cx-40, this.movement.cy, this.movement.cx-80, -10);
+		var m1 = new Movement(25, this.movement.cx-40, this.movement.cy, this.movement.cx-70, -10);
 		b1.addMovement(m1);
-		b1.image = img_b6a;
+		b1.image = img_bb2;
 		b1.w = 6;
 		b1.h = 16;
 		bullets[bullets.length] = b1;
 	        
 		var b2 = new PlayerBullet();
-		var m2 = new Movement(25, this.movement.cx+40, this.movement.cy, this.movement.cx+80, -10);
+		var m2 = new Movement(25, this.movement.cx+40, this.movement.cy, this.movement.cx+70, -10);
 		b2.addMovement(m2);
-		b2.image = img_b6a;
+		b2.image = img_bb2;
 		b2.w = 6;
 		b2.h = 16;
 		bullets[bullets.length] = b2;
 	        
 		var b1 = new PlayerBullet();
-		var m1 = new Movement(25, this.movement.cx-14, this.movement.cy, this.movement.cx-30, -10);
+		var m1 = new Movement(25, this.movement.cx-14, this.movement.cy, this.movement.cx-35, -10);
 		b1.addMovement(m1);
 		bullets[bullets.length] = b1;
 	        
 		var b2 = new PlayerBullet();
-		var m2 = new Movement(25, this.movement.cx+14, this.movement.cy, this.movement.cx+30, -10);
+		var m2 = new Movement(25, this.movement.cx+14, this.movement.cy, this.movement.cx+35, -10);
 		b2.addMovement(m2);
 		bullets[bullets.length] = b2;
 	        
