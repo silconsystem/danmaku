@@ -32,7 +32,7 @@ Background.prototype.draw = function()
 {        
 	var img = new Image();
 	var fx_img = new Image();
-        
+        /*
 	if (currentLevel == 1)
 	{
 		fx_img.src = "/game/danmaku/img/bg/st1_overlay00a.png";
@@ -41,11 +41,12 @@ Background.prototype.draw = function()
 	else if (currentLevel == 2)
 	{
 		fx_img.src = "/game/danmaku/img/bg/st2_overlay00a.png";
-		img.src = "/game/danmaku/img/bg/lotusland2.png";
+		img.src = "/game/danmaku/img/bg/st2_layer00.jpg";
 	}
-	else if (currentLevel == 3)
+	else */if (currentLevel == 1)
 	{
-		img.src = "/game/danmaku/img/bg/forest.png";
+		fx_img.src = "/game/danmaku/img/bg/st3_overlay00a.png";
+		img.src = "/game/danmaku/img/bg/st3_layer00.jpg";
 	}
 	else if (currentLevel == 4)
 	{
@@ -63,8 +64,8 @@ Background.prototype.draw = function()
 	else if (this.fx_y2 > 549) {
 		this.fx_y2 = -448;
 	}
-	this.fx_y += 2;
-	this.fx_y2 += 2;	
+	this.fx_y += 3;
+	this.fx_y2 += 3;	
 
 	// standard routine to draw the background
 	if (this.y > 600) {
