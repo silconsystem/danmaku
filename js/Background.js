@@ -25,14 +25,21 @@ function Background()
 
 Background.prototype.move = function()
 {
-	// TODO create cameramovement
+	/*
+	 * TODO create cameramovement
+	 * the level counter variable can be used to  create an effect on the background images	
+	 * var level = new Level();
+	 *
+	 * counter = level.cs;
+	 */
 }
 	
 Background.prototype.draw = function()
 {        
 	var img = new Image();
+	var imgB = new Image();
 	var fx_img = new Image();
-        /*
+        
 	if (currentLevel == 1)
 	{
 		fx_img.src = "/game/danmaku/img/bg/st1_overlay00a.png";
@@ -43,7 +50,7 @@ Background.prototype.draw = function()
 		fx_img.src = "/game/danmaku/img/bg/st2_overlay00a.png";
 		img.src = "/game/danmaku/img/bg/st2_layer00.jpg";
 	}
-	else */if (currentLevel == 1)
+	else if (currentLevel == 3)
 	{
 		fx_img.src = "/game/danmaku/img/bg/st3_overlay00a.png";
 		img.src = "/game/danmaku/img/bg/st3_layer00.jpg";
@@ -61,8 +68,8 @@ Background.prototype.draw = function()
 	if (this.fx_y > 550) {
 		this.fx_y = -449;
 	}
-	else if (this.fx_y2 > 549) {
-		this.fx_y2 = -448;
+	else if (this.fx_y2 > 550) {
+		this.fx_y2 = -449;
 	}
 	this.fx_y += 3;
 	this.fx_y2 += 3;	
