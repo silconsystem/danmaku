@@ -42,26 +42,28 @@ Background.prototype.draw = function()
         
 	if (currentLevel == 1)
 	{
-		fx_img.src = "/game/danmaku/img/bg/st1_overlay00a.png";
-		img.src = "/game/danmaku/img/bg/st1_layer00a.jpg";
+		fx_img.src = "/game/danmaku/img/bg/st1_overlay00.png";
+		img.src = "/game/danmaku/img/bg/st1_layer00.jpg";
 	}
 	else if (currentLevel == 2)
 	{
-		fx_img.src = "/game/danmaku/img/bg/st2_overlay00a.png";
+		fx_img.src = "/game/danmaku/img/bg/st2_overlay00.png";
 		img.src = "/game/danmaku/img/bg/st2_layer00.jpg";
 	}
 	else if (currentLevel == 3)
 	{
-		fx_img.src = "/game/danmaku/img/bg/st3_overlay00a.png";
+		fx_img.src = "/game/danmaku/img/bg/st3_overlay00.png";
 		img.src = "/game/danmaku/img/bg/st3_layer00.jpg";
 	}
 	else if (currentLevel == 4)
 	{
-		img.src = "/game/danmaku/img/bg/village.jpg";
+		fx_img.src = "/game/danmaku/img/bg/st4_overlay00.png";
+		img.src = "/game/danmaku/img/bg/st4_layer00.jpg";
 	}
 	else if (currentLevel == 5)
 	{
-		img.src = "/game/danmaku/img/bg/mysticbg5.png";
+		fx_img.src = "/game/danmaku/img/bg/st5_overlay00.png";
+		img.src = "/game/danmaku/img/bg/st5_layer00.jpg";
 	}
 
 	// draw the overlay image

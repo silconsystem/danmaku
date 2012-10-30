@@ -11,7 +11,7 @@ function Level()
 	
 	this.cs = 0; // current frame
 	
-	this.ts = 6000;
+	this.ts = 4500;
 	
 	this.finished = 0; // if 1, level is completed
 }

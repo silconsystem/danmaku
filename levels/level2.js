@@ -56,7 +56,7 @@ function generateLevel2()
         }
 	
 	e = createEnemy8(3200);
-	move011(e);
+	move007(e);
 	spellCard016(e);
 	level.addEnemy(e);
 	
@@ -158,17 +158,6 @@ function move010(e)
 	e.addRelativeMovement(new Movement(1, 0, 0, rn, h));
         }
 }
-
-// enter from top, looping triangle
-function move011(e)
-{
-        e.addMovement(new Movement(1, bg.w/2, 0, bg.w/2, 200));
-        
-        e.addLoopingMovement(new Movement(1, 0, 0, bg.w/2-150, 250));
-        e.addLoopingMovement(new Movement(1, 0, 0, bg.w/2+150, 150));
-        e.addLoopingMovement(new Movement(1, 0, 0, bg.w/2, 150));
-}
-
 
 ////////////////////////////////////////
 // SPELLCARDS
