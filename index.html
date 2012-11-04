@@ -58,6 +58,11 @@
 			<br />
 			<input type="button" class="button" onClick="javascript:play();" value="Play!" />
 			<input type="button" class="button" onClick="javascript:stop();" value="Stop!" />
+			<br />
+			<form name="gameMode">
+			        <input type="checkbox" name="mode" id="box1" checked>Die in Game<br />
+			        <input type="checkbox" name="mode" id="box2">Dont Die in Game<br />
+			</form>
 			
 			<div id="play_score">
 			        <b>
@@ -133,12 +138,14 @@
 </html>
 
 <script type="text/javascript">
+
 // inheritance function
 function extend(childClassOrObject, parentClassOrObject)
 { 
 	childClassOrObject.prototype = new parentClassOrObject;
 	childClassOrObject.prototype.constructor = childClassOrObject;
-} 
+}
+
 </script>
 <!-- Game Elements -->
 <script type="text/javascript" src="js/Background.js"></script>
@@ -381,18 +388,6 @@ function work()
 	mh_text.innerHTML = pg.health;
 	gr_text.innerHTML = pg.graze;
 	
-	// ------------------------------ handle player death ---------- comment for debug, uncomment for playtesting
-	if (pg.health == 0)
-	{
-		pg.dead = 1;
-	        
-		//if (pg.dead == 1)
-		//{
-		//	clearInterval(interval);
-		//	alert("Game Over!")
-		//}
-	}
-	
 	// increment currentLevel
 	if (powerups.length == 0 && enemies.length == 0 && bullets.length == 0 && level.finished == 1)
 	{
@@ -402,6 +397,34 @@ function work()
 				
 	// increment frame
 	frame_text.innerHTML = now++;
+
+	// handle player death ; debug mode feature
+	if (pg.health == 0)
+	{
+		for (var i = 0; i < document.gameMode.mode.length; i++)
+		{
+
+			if (document.gameMode.mode[0].checked == true)
+			{
+				document.gameMode.mode[1].checked = false;
+
+				pg.dead = 1;
+
+				if (pg.dead == 1)
+				{
+					clearInterval(interval);
+					alert("Game Over!")
+				}
+			}
+			else if (document.gameMode.mode[1].checked == true)
+			{
+				document.gameMode.mode[0].checked = false;
+
+				pg.health = 10;
+			}
+		}
+	        
+	}
 }
 
 // "Play" button onclick, reset everything, start game
