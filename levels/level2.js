@@ -91,7 +91,6 @@ function createEnemy7(d)
         return e;
 }
 
-// return a level 3 enemy, spawning at the specified frame.
 // Level 2 Boss: Kurimi
 function createEnemy8(d)
 {

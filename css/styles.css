@@ -99,7 +99,7 @@ canvas {
  * 				------------- */
 #game_wrapper {
         position: absolute;
-        top: 60px;
+        top: 0;
         left: 50%;
         margin-left: -425px;
         padding: 15px;
@@ -133,10 +133,7 @@ canvas {
 }
 */
 #header {
-        width: 600px;
-        height: 30px;
-        margin: 0;
-        padding: 0;
+        /* not applicable yet */
 }
 
 #canvas_wrapper {

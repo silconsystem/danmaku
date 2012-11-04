@@ -331,7 +331,10 @@ Player.prototype.bomb = function()
 	for (var i = 0; i < coords.length; i++)
 	{
 		var b1 = new PlayerBomb();
-		b1.addMovement(new Movement(2, this.movement.cx, this.movement.cy, Math.round(coords[i].x*2), Math.round(coords[i].y/2)));
+		b1.addMovement(new Movement(2, this.movement.cx, this.movement.cy, coords[i].x, coords[i].y));
+		b1.image = img_spc;
+		b1.w = 36;
+		b1.h = 36;
 		bullets[bullets.length] = b1;
 	}
 }
@@ -339,12 +342,54 @@ Player.prototype.bomb = function()
 Player.prototype.special = function()
 { 
 	var coords = getSpiral();
-		
+	var c1 = 12, c2 = 24, c3 = 48, c4 = 96;
+	
 	for (var i = 0; i < coords.length; i++)
-	{	
+	{
+		c1++;
+		c1 = c1%coords.length;
+		c2++;
+		c2 = c2%coords.length;
+		c3++;
+		c3 = c3%coords.length;
+		c4++;
+		c4 = c4%coords.length;
+	        
 		var special = new PlayerSpell();
-		special.addMovement(new Movement(3, this.movement.cx, this.movement.cy, Math.round(coords[i].x), Math.round(coords[i].y)));
+		special.addMovement(new Movement(3, this.movement.cx, this.movement.cy, (coords[c1].x), (coords[c1].y)));
+		special.image = img_bpA;
 		bullets[bullets.length] = special;
+
+		var special01 = new PlayerSpell();
+		special01.addMovement(new Movement(3, this.movement.cx, this.movement.cy, (coords[c2].x), (coords[c2].y)));
+		special01.image = img_bb2;
+		bullets[bullets.length] = special01;
+
+		var special02 = new PlayerSpell();
+		special02.addMovement(new Movement(3, this.movement.cx, this.movement.cy, (coords[c3].x), (coords[c3].y)));
+		special02.image = img_bpA
+		bullets[bullets.length] = special02;
+
+		var special03 = new PlayerSpell();
+		special03.addMovement(new Movement(3, this.movement.cx, this.movement.cy, (coords[c4].x), (coords[c4].y)));
+		special03.image = img_bb2;
+		bullets[bullets.length] = special03;
+	}
+
+	// bullet to score spell get the 200000 score quicker to regain strength
+	// 1 frames bullets are destroyed and made into player-homing powerups
+	for (var i = 0; i < bullets.length; i++)
+	{
+	        var b = bullets[i];
+	        
+	        if (b instanceof EnemyBullet)
+	        {
+			b.dead = 1;
+			var p = new Powerup('s');
+			p.addMovement(new Movement(12, b.movement.cx, b.movement.cy, pg.movement.cx, pg.movement.cy));
+			powerups[powerups.length] = p;
+			bullets.splice(i,1);
+	        }
 	}
 }
 	

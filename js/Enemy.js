@@ -21,13 +21,13 @@ function Enemy()
 	this.movements = [];
 	this.movement = null;
   
-	this.hit = 0; // indicates if the enemy has been hit this frame
-	this.life = 10; // life points
-	this.level = 1; // enemy level (1 to 5) to calculate drops and score.
+	this.hit = 0; 		// indicates if the enemy has been hit this frame
+	this.life = 10;		// life points
+	this.level = 1; 	// enemy level (1 to 5) to calculate drops and score.
 	
-	this.spellcard = null; // shooting pattern
+	this.spellcard = null;	// shooting pattern
 	
-	this.delay = 0; // spawn delay
+	this.delay = 0;		// spawn delay
 }
 
 Enemy.prototype.check = function()

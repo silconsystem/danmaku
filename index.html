@@ -17,12 +17,6 @@
 <body>
 
 <div id="content_wrapper" align="center">
-
-        <div id="header">
-	<h1>Marisa Danmaku</h1>
-        </div><!-- header -->
-	
-        <br />
         
         <div id="game_wrapper">
 	
@@ -448,8 +442,8 @@ function play()
 	}
 	else if (powerups.length == 0 && enemies.length == 0 && bullets.length == 0 && currentLevel == 2)
 	{
-		echo("STAGE TWO - ...!");
-		echoAdds("...");
+		echo("STAGE TWO - Wastelands!");
+		echoAdds("After defeating Keine Marisa follows a shady character into the wastelands...");
 		level = generateLevel2();
 		bgm_st2.play();
 		if (pg.health < 10)
@@ -461,7 +455,7 @@ function play()
 		        bombs = 3;
 		}
 
-		script_txt.innerHTML = "...";
+		script_txt.innerHTML = "The desert sands here are scorching with heat, luckily Marisa keeps a cool head.";
 	}
 	else if (powerups.length == 0 && enemies.length == 0 && bullets.length == 0 && currentLevel == 3)
 	{
@@ -519,7 +513,7 @@ function play()
 	}
 	
 	// start main game loop
-	interval = setInterval(work, 12);
+	interval = setInterval(work, 20);
 }
 
 // print a big text in the middle of the screen
@@ -563,21 +557,26 @@ function rand(sn, en)
 }
 // stop default browser key behaviour
 var keys = [];
-window.addEventListener("keydown",
-    function(e){
+window.addEventListener("keydown", function(e)
+{
+        
         keys[e.keyCode] = true;
-        switch(e.keyCode){
-            case 37: case 39: case 38:  case 40: // Arrow keys
-            case 32: e.preventDefault(); break; // Space
-            default: break; // do not block other keys
+        
+        switch(e.keyCode)
+        {
+	case 37: case 39: case 38:  case 40:		// Arrow keys
+	case 32:
+		e.preventDefault();
+		break; 			// Space
+	default:
+		break;			// do not block other keys
         }
-    },
-false);
-window.addEventListener('keyup',
-    function(e){
-        keys[e.keyCode] = false;
-    },
-false);
+},false);
+
+window.addEventListener('keyup', function(e)
+{
+	keys[e.keyCode] = false;
+},false);
 
 // respond to keydown
 document.onkeydown = function(e)

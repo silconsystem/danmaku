@@ -56,7 +56,7 @@ function getSpiral()
 
         var coords = [];
 
-        for (var i = 0; i < 500; i+=10)
+        for (var i = 0; i < 128; i+=4)
         {
 	var angle = 0.7 * i;
 
