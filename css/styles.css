@@ -10,6 +10,20 @@
  * 		is a tribute to ZUN! the genius behind the Touhou Danmaku series
  */
 /* ------------
+ * 		Custom Fonts		------------- */
+@font-face {
+        src: url(../Sprawl.ttf);
+        font-family: Sprawl;
+}
+@font-face {
+        src: url(../JandaSafeandSound.ttf);
+        font-family: JandaSafeandSound;
+}
+@font-face {
+        src: url(../JandaSafeandSoundSolid.ttf);
+        font-family: JandaSafeandSoundSolid;
+}
+/* ------------
  * 		reset HTML
  * 				------------- */
 * {
@@ -24,15 +38,15 @@ body {
  * 		HTML Elements
  * 				------------- */
 h1 {
-        font-family: 'Skranji', Verdana, sans-serif;
-        font-size: 12pt;
+        font-family: 'Sprawl', Verdana, sans-serif;
+        font-size: 0.8em;
         font-weight: bold;
         color: #0ff;
 }
 
 h2 {
-        font-family: 'Skranji', Verdana, sans-serif;
-        font-size: 8pt;
+        font-family: 'Sprawl', Verdana, sans-serif;
+        font-size: 0.2em;
         font-weight: bold;
         color: #fff;
         margin: 2px;
@@ -41,8 +55,8 @@ h2 {
 input.button {
         width: 120px;
         height: 30px;
-        font-family: 'Bilbo Swash Caps', Verdana, sans-serif;
-        font-size: 16pt;
+        font-family: 'JandaSafeandSound', Verdana, sans-serif;
+        font-size: 0.9em;
         font-weight: bold;
         border: 2px solid #808080;
         border-radius: 6px;
@@ -60,8 +74,8 @@ input.button {
 input.button:hover {        
         width: 120px;
         height : 30px;
-        font-family: 'Bilbo Swash Caps', Verdana, sans-serif;
-        font-size: 16pt;
+        font-family: 'JandaSafeandSound', Verdana, sans-serif;
+        font-size: 0.9em;
         font-weight: bold;
         border: 2px solid #808080;
         border-radius: 6px;
@@ -106,35 +120,36 @@ canvas {
         background-color: #000;
         border: 2px solid #ccc;
         border-radius: 12px;
-        width: 850px;
-        height: 750px;
+        width: 960px;
+        height: 700px;
 }
 /* TODO got some images that lie on top of the game screen, not looking like much yet
  * but will create a Touhou like background effect later when I can start the layout
  * with css and html(wich I'm better at than coding) forgive me for the crappy
  * layout you're seeing now
+ */
  
 .reimu {
         position: absolute;
-        top: 570px;
-        left: 50%;
-        margin-left: 300px;
+        top: 400px;
+        left: 20%;
+        margin-left: -30px;
         float: right;
         z-index: 400;
 }
 
 .marisa {
         position: absolute;
-        top: 570px;
-        right: 50%;
-        margin-right: 300px;
+        top: 400px;
+        right: 30%;
+        margin-right: 100px;
         float: left;
         z-index: 400;
 }
 */
 #header {
         /* not applicable yet */
-}
+}75
 
 #canvas_wrapper {
         float: left;
@@ -145,11 +160,11 @@ canvas {
         position: absolute;
         left: 50%;
         margin-top: 1px;
-        margin-left: 120px;
+        margin-left: 190px;
         padding: 10px;
-        font-family: 'Bilbo Swash Caps', Verdana, sans-serif;
+        font-family: 'Sprawl', Verdana, sans-serif;
         font-weight: bold;
-        font-size: 12pt;
+        font-size: 0.7em;
         color: #fff;
         float: left;
         display: block;
@@ -157,19 +172,20 @@ canvas {
         height: 600px;
         border: 2px solid #ccc;
         text-align: left;
+        z-index: 700;
 }
 
 span {
         margin-top: 30px;
         color: #0cf;
-        font-family: 'Skranji', Verdana, sans-serif;
-        font-size: 12pt;
+        font-family: 'Sprawl', Verdana, sans-serif;
+        font-size: 0.8em;
 }
 
 span#script {
         color: #fff;
-        font-family: 'Bilbo Swash Caps', Verdana, sans-serif;
-        font-size: 14pt;
+        font-family: 'JandaSafeandSoundSolid', Verdana, sans-serif;
+        font-size: 1.4em;
         font-size: bolder;
         text-align: center;
         text-shadow: 2px 2px 2px #000;
@@ -177,17 +193,20 @@ span#script {
 
 #footer {
         position: absolute;
-        top: 660px;
+        top: 545px;
         left: 50%;
-        margin-left: -375px;
-        padding-top: 15px;
+        margin-left: -600px;
+        padding-top: 50px;
+        padding: 70px;
         width: 750px;
-        height: 150px;
-        border: 2px solid #ccc;
-        border-radius: 3px;
-        background: #000;
-        font-family: 'Skranji', Verdana, sans-serif;
-        font-size: 12pt;
+        height: 200px;
+        background-image: url(../img/bg/touhou_bg.png);
+        background-repeat: no-repeat;
+        font-family: 'JandaSafeandSound', Verdana, sans-serif;
+        font-size: 0.7em;
+        font-weight: bolder;
+        text-align: center;
+        text-shadow: 2px 2px 2px #000;
         color: #fff;
         z-index: 500;
 }
@@ -196,16 +215,14 @@ div#play_score {
         position: absolute;
         top: 610px;
         left: 50%;
-        margin-left: -140px;
+        margin-left: -130px;
         width: 255px;
         height: 30px;
         padding: 3px;
-        border: 1px solid #ccc;
-        border-radius: 3px;
-        background-color: #000;
         color: #fff;
-        font-family: 'Bilbo Swash Caps', Verdana, sans-serif;
-        font-size: 13pt;
+        font-family: 'JandaSafeandSound', Verdana, sans-serif;
+        background-image: url(../img/bg/score_bg.jpg);
+        font-size: 1.0em;
         font-weight: bold;
         z-index: 600;
 }

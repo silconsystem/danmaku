@@ -326,16 +326,52 @@ Player.prototype.shoot = function()
 Player.prototype.bomb = function()
 {
 	// circle bomb	
-	var coords = getCircle();
+	var coords = getDenseCircle();
 	
 	for (var i = 0; i < coords.length; i++)
 	{
-		var b1 = new PlayerBomb();
-		b1.addMovement(new Movement(2, this.movement.cx, this.movement.cy, coords[i].x, coords[i].y));
-		b1.image = img_spc;
-		b1.w = 36;
-		b1.h = 36;
-		bullets[bullets.length] = b1;
+		for (var j = 0; j < 4; j++)
+		{
+			theta = j * 0.7;
+			twist = j * Math.sin(theta);
+			centerX = this.movement.cx + 12;
+			centerY = this.movement.cy - 16;
+
+			var b1 = new PlayerBomb();
+			b1.addMovement(new Movement(2, centerX+48, this.movement.cy, (coords[i].x*twist), (coords[i].y*twist)));
+			b1.image = img_spc;
+			b1.w = 36;
+			b1.h = 36;
+			bullets[bullets.length] = b1;
+
+			var b2 = new PlayerBomb();
+			b2.addMovement(new Movement(2, centerX-48, this.movement.cy, (coords[i].x*twist), (coords[i].y*twist)));
+			b2.image = img_spc;
+			b2.w = 36;
+			b2.h = 36;
+			bullets[bullets.length] = b2;
+
+			var b2 = new PlayerBomb();
+			b2.addMovement(new Movement(2, centerX+20, this.movement.cy, (coords[i].x*twist), (coords[i].y*twist)));
+			b2.image = img_spc;
+			b2.w = 36;
+			b2.h = 36;
+			bullets[bullets.length] = b2;
+
+			var b3 = new PlayerBomb();
+			b3.addMovement(new Movement(2, centerX-20, this.movement.cy, (coords[i].x*twist), (coords[i].y*twist)));
+			b3.image = img_spc;
+			b3.w = 36;
+			b3.h = 36;
+			bullets[bullets.length] = b3;
+
+			var b4 = new PlayerBomb();
+			b4.addMovement(new Movement(2, centerX, centerY-40, (coords[i].x*twist), (coords[i].y*twist)));
+			b4.image = img_spc;
+			b4.w = 36;
+			b4.h = 36;
+			bullets[bullets.length] = b4;
+		}
 	}
 }
 

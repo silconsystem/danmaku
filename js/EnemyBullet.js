@@ -38,7 +38,11 @@ EnemyBullet.prototype.check = function()
 	}
 	else if (area_overlap(this.graze_area(), pg.area()))
 	{
-		pg.graze += 1;
+		graze += 1;
+		if (graze % 1000)
+		{
+			pg.graze += 1;
+		}
 	}
 }
 

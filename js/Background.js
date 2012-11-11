@@ -60,11 +60,6 @@ Background.prototype.draw = function()
 		fx_img.src = "/game/danmaku/img/bg/st4_overlay00.png";
 		img.src = "/game/danmaku/img/bg/st4_layer00.jpg";
 	}
-	else if (currentLevel == 5)
-	{
-		fx_img.src = "/game/danmaku/img/bg/st5_overlay00.png";
-		img.src = "/game/danmaku/img/bg/st5_layer00.jpg";
-	}
 
 	// draw the overlay image
 	if (this.fx_y > 550) {

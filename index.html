@@ -62,6 +62,10 @@
 			<form name="gameMode">
 			        <input type="checkbox" name="mode" id="box1" checked>Die in Game<br />
 			        <input type="checkbox" name="mode" id="box2">Dont Die in Game<br />
+			        <input type="checkbox" name="mode" id="box3">Full Power<br />
+			        <input type="checkbox" name="mode" id="box4">Start at level 2<br />
+			        <input type="checkbox" name="mode" id="box5">Start at level 3<br />
+			        <input type="checkbox" name="mode" id="box6">Start at level 4<br />
 			</form>
 			
 			<div id="play_score">
@@ -78,15 +82,15 @@
 		
 		<div id="footer">
 		
-		<span id="script"></span> 
+			<span id="script"></span> 
 		
 		</div><!-- footer -->
 		
 	</div><!-- game_wrapper -->
 	<br />
 	
-	<!--<div class="reimu"><img src="img/bg/reimu.png" /></div>-->
-	<!--<div class="marisa"><img src="img/bg/marisa.png" /></div>-->
+	<div class="reimu"><img src="img/bg/reimu.png" /></div>
+	<div class="marisa"><img src="img/bg/marisa.png" /></div>
 	
 </div><!-- content_wrapper -->
 <div id="images" style="display: none;">
@@ -167,7 +171,6 @@ function extend(childClassOrObject, parentClassOrObject)
 <script type="text/javascript" src="levels/level2.js"></script>
 <script type="text/javascript" src="levels/level3.js"></script>
 <script type="text/javascript" src="levels/level4.js"></script>
-<script type="text/javascript" src="levels/level5.js"></script>
 
 <script type="text/javascript">
 
@@ -193,7 +196,7 @@ var spell_text = document.getElementById('spell');
 var script_txt = document.getElementById('script');
 
 // 1st Script
-script_txt.innerHTML = "It was quiet around Marisa Kirisames little house  too quiet and a little boring.<br>There were rumours about humans dissappearing from the village and Marisa had a vision about a powerfull unknown Magic involved<br>Marisa decides to investigate.";
+script_txt.innerHTML = "It was quiet around Marisa Kirisames little house,<br /> too quiet and a little boring.<br>There were rumours about humans dissappearing from the village and Marisa had a vision about a powerfull unknown Magic involved, Marisa decides to investigate.";
 
 var oe_text = document.getElementById('oe');
 var ob_text = document.getElementById('ob');
@@ -249,6 +252,7 @@ var img_ex = document.getElementById('ex');
 
 // other variables
 var now = 0;
+var graze = 0;
 var score = 0;
 var bombs = 3;
 var spell = 10;
@@ -357,7 +361,7 @@ function work()
 	for (var i = 0; i < spawned.length; i++)
 	    enemies[enemies.length] = spawned[i];
 	
-	var graze_score = pg.graze * 200;
+	var graze_score = pg.graze * 10;
 	
 	// print stuff
 	score_text.innerHTML = score;
@@ -406,19 +410,19 @@ function work()
 
 			if (document.gameMode.mode[0].checked == true)
 			{
-				document.gameMode.mode[1].checked = false;
+				document.getElementById("box2").checked = false;
 
 				pg.dead = 1;
 
 				if (pg.dead == 1)
 				{
+					script_txt.innerHTML = "Game Over, please try again !!"
 					clearInterval(interval);
-					alert("Game Over!")
 				}
 			}
 			else if (document.gameMode.mode[1].checked == true)
 			{
-				document.gameMode.mode[0].checked = false;
+				document.getElementById("box1").checked = false;2
 
 				pg.health = 10;
 			}
@@ -452,6 +456,33 @@ function play()
 	s2_p = 0;
 	s3_p = 0;
 	sm_p = 0;
+
+
+	// full powerups, level select
+	for (var i = 0; i < document.gameMode.mode.length; i++)
+	{
+	        if (document.gameMode.mode[2].checked == true)
+	        {
+		pg.power = 60;
+	        }
+
+	        if (document.gameMode.mode[3].checked == true)
+	        {
+		currentLevel = 2;
+	        }
+	        else if (document.gameMode.mode[4].checked == true)
+	        {
+		currentLevel = 3;
+	        }
+	        else if (document.gameMode.mode[5].checked == true)
+	        {
+		currentLevel = 4;
+	        }
+	        else if (document.gameMode.mode[i].checked == false)
+	        {
+		currentLevel = 1;
+	        }
+	}
 		
 	// level handler
 	if (powerups.length == 0 && enemies.length == 0 && bullets.length == 0 && currentLevel == 1)
@@ -499,24 +530,8 @@ function play()
 	}
 	else if (powerups.length == 0 && enemies.length == 0 && bullets.length == 0 && currentLevel == 4)
 	{
-		echo("STAGE FOUR - Human Village!");
-		level = generateLevel4();
-		bgm_st4.play();
-		if (pg.health < 10)
-		{
-		        pg.health = 10;
-		}
-		else if (bombs < 3)
-		{
-		        bombs = 3;   
-		}
-		
-		script_txt.innerHTML = "Upon reaching the Human Village Marisa found nothing but a place Terrorized by Dragons.<br>An earie athmosphere was in the air here<br>Marisa wonders who or what is up ahead";
-	}
-	else if (powerups.length == 0 && enemies.length == 0 && bullets.length == 0 && currentLevel == 5)
-	{
 		echo("THE SHOWDOWN - Scarlet Devil!");
-		level = generateLevel5();
+		level = generateLevel4();
 		bgm_st5.play();
 		if (pg.health < 10)
 		{
@@ -529,10 +544,12 @@ function play()
 
 		script_txt.innerHTML = "After defeating Alice Marisa found out who was playing with this powerfull magic spells,<br>Remilia Scarlet had come across a rare artifact that boosted her powers.<br>Marisa calls her out to face her in battle and obtain the artifact for herself.";
 	}
-	else if (powerups.length == 0 && enemies.length == 0 && bullets.length == 0 && currentLevel == 6)
+	else if (powerups.length == 0 && enemies.length == 0 && bullets.length == 0 && currentLevel == 5)
 	{
 		echo("Victory - The End");
 		clearInterval(interval);
+
+		script_txt.innerHTML = "you have cleared the game !!";
 	}
 	
 	// start main game loop
