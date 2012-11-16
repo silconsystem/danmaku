@@ -128,7 +128,7 @@ canvas {
  * with css and html(wich I'm better at than coding) forgive me for the crappy
  * layout you're seeing now
  */
- 
+ /*
 .reimu {
         position: absolute;
         top: 400px;
@@ -136,7 +136,7 @@ canvas {
         margin-left: -30px;
         float: right;
         z-index: 400;
-}
+}*/
 
 .marisa {
         position: absolute;
@@ -196,10 +196,9 @@ span#script {
         top: 545px;
         left: 50%;
         margin-left: -600px;
-        padding-top: 50px;
-        padding: 70px;
+        padding: 40px;
         width: 750px;
-        height: 200px;
+        height: 220px;
         background-image: url(../img/bg/touhou_bg.png);
         background-repeat: no-repeat;
         font-family: 'JandaSafeandSound', Verdana, sans-serif;
