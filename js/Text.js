@@ -18,6 +18,7 @@ function Text()
 	
 	this.dead = 0;
 	
+	
 	this.movements = [];
 	this.movement = null;
 }
