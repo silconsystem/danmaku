@@ -106,23 +106,8 @@ Enemy.prototype.shoot = function()
 					     this.movement.cx+b.movement.ex+newxspan,
 					     this.movement.cy+b.movement.ey+newyspan);
 				b.movement = m;
-				if (this.level == 1)
-				{
-					snd_esht3.play();
-				}
-				else if (this.level == 2)
-				{
-					snd_esht4.play();
-				}
-				else if (this.level == 3 || this.level == 4)
-				{
-					snd_esht7.play();
-				}
-				else if (this.level == 5)
-				{
-					snd_esht8.play();
-				}
 				
+				playSfx("homingenemyshot", this.level);
 			}
 			else
 			{
@@ -135,26 +120,8 @@ Enemy.prototype.shoot = function()
 			
 				b.movement = m;
 
-				if (this.level == 1)
-				{
-					snd_esht1.play();			        
-				}
-				else if (this.level == 2)
-				{
-					snd_esht2.play();
-				}
-				else if (this.level == 3)
-				{
-					snd_esht5.play();
-				}
-				else if (this.level == 4)
-				{
-					snd_esht6.play();
-				}
-				else if (this.level == 5)
-				{
-					snd_esht2.play();
-				}
+				playSfx("enemyshot", this.level);
+				
 			}
 		// return bullets    
 		bullets[bullets.length] = b;
