@@ -169,7 +169,7 @@ canvas {
         float: left;
         display: block;
         width: 250px;
-        height: 600px;
+        height: 660px;
         border: 2px solid #ccc;
         text-align: left;
         z-index: 700;
@@ -212,7 +212,7 @@ span#script {
 
 div#play_score {
         position: absolute;
-        top: 610px;
+        top: 630px;
         left: 50%;
         margin-left: -130px;
         width: 255px;

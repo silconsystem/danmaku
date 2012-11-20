@@ -20,5 +20,5 @@ function Explosion()
 	this.movements = [];
 	this.movement = null;
 	
-	snd_xpld1.play();
+	playSfx("explosion", null);
 }

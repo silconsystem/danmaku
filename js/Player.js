@@ -435,14 +435,14 @@ Player.prototype.work = function()
 	if (sh_p == 1)
 	{
 		this.shoot()
-		snd_shot1.play();
+		playSfx("playershot", 1);
 	}
 	else if (s2_p == 1 && bombs > 0)
 	{
 		s2_p = 0;			
 		bombs -= 1;
 		this.bomb();
-		snd_shot2.play();
+		playSfx("playershot", 2);
 	}
 	else if (s3_p == 1 && spell > 0)
 	{
@@ -451,6 +451,6 @@ Player.prototype.work = function()
 		s3_p = 0;
 		spell -= 1;
 		this.special();
-		snd_shot3.play();
+		playSfx("playershot", 3);
 	}
 }
