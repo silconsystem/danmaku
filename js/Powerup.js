@@ -39,12 +39,12 @@ Powerup.prototype.check = function()
 		if (this.type == 'p')
 		{
 			pg.power++;
-			snd_item1.play();
+			playSfx("powerup", 1);
 		}
 		else if (this.type == 's')
 		{
 			score += 1200;
-			snd_item2.play();
+			playSfx("powerup", 2);
 		}
 		
 		this.dead = 1;
