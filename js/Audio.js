@@ -27,15 +27,29 @@ for (var i=1;i<=2;i++) {
 snd_select[0] = new Audio("audio/select.mp3"),
 snd_explode[0] = new Audio("audio/explode.mp3");
 	
-
-	
-function startMusic()
+function currentSongNumber()
 {
 	var songToPlay = currentLevel;
 	if (currentLevel == 4) {
 		songToPlay = 5;
 	}
+	return songToPlay;
+}
+	
+function startMusic()
+{
+	var songToPlay = currentSongNumber();
+	
+	var vol = document.getElementById("MusicVolume").value;
+	backgroundMusic[songToPlay].volume = vol;
+
 	backgroundMusic[songToPlay].play();
+}
+
+function ChangeMusicVolume(vol) 
+{
+	var songToPlay = currentSongNumber();
+	backgroundMusic[songToPlay].volume = vol;
 }
 
 function stopAllMusic()
@@ -47,10 +61,7 @@ function stopAllMusic()
 
 function stopMusic()
 {
-	var songToStop = currentLevel;
-	if (currentLevel == 4) {
-		songToStop = 5;
-	}
+	var songToStop = currentSongNumber();
 	backgroundMusic[songToStop].pause();
 }
 
@@ -64,45 +75,55 @@ function toggleMusic()
 	}
 }
 
+
 function playSfx(sfxtype, number)
 {
 	if (document.getElementById('box8').checked) {
+	
+		var soundToPlay;
+		
 		if (sfxtype == "playershot") {
-			snd_shot[number].play();
+			soundToPlay = snd_shot[number];
 		}
-		if (sfxtype == "homingenemyshot") {
+		else if (sfxtype == "homingenemyshot") {
 			if (number == 1) {		
-				snd_enemyshot[3].play();
+				soundToPlay = snd_enemyshot[3];
 			}
 			else if (number == 2) {
-				snd_enemyshot[4].play();
+				soundToPlay = snd_enemyshot[4];
 			}
 			else if (number == 3 || number == 4) {
-				snd_enemyshot[7].play();
+				soundToPlay = snd_enemyshot[7];
 			}
 			else if (number == 5) {
-				snd_enemyshot[8].play();
+				soundToPlay = snd_enemyshot[8];
 			}
 		}
-		if (sfxtype == "enemyshot") {
+		else if (sfxtype == "enemyshot") {
 			if (number == 1) {
-				snd_enemyshot[1].play();			        
+				soundToPlay = snd_enemyshot[1];			        
 			}
 			else if (number == 2 || number == 5)  {
-				snd_enemyshot[2].play();
+				soundToPlay = snd_enemyshot[2];
 			}
 			else if (number == 3) {
-				snd_enemyshot[5].play();
+				soundToPlay = snd_enemyshot[5];
 			}
 			else if (number == 4) {
-				snd_enemyshot[6].play();
+				soundToPlay = snd_enemyshot[6];
 			}
 		}
-		if (sfxtype == "explosion") {
-			snd_explode[0].play();
+		else if (sfxtype == "explosion") {
+			soundToPlay = snd_explode[0];
 		}
-		if (sfxtype == "powerup") {
-			snd_item[number].play();
+		else if (sfxtype == "powerup") {
+			soundToPlay = snd_item[number];
+		}
+		
+		if (soundToPlay) {
+			var vol = document.getElementById("SfxVolume").value;
+			soundToPlay.volume = vol;
+			soundToPlay.play();
 		}
 	}
 	
