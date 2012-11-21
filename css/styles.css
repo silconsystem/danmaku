@@ -37,7 +37,7 @@ body {
 /* ------------
  * 		HTML Elements
  * 				------------- */
-h1 {
+h1, h2 {
         font-family: 'Sprawl', Verdana, sans-serif;
         font-size: 0.8em;
         font-weight: bold;
@@ -45,15 +45,13 @@ h1 {
 }
 
 h2 {
-        font-family: 'Sprawl', Verdana, sans-serif;
         font-size: 0.2em;
-        font-weight: bold;
         color: #fff;
         margin: 2px;
 }
 
-input.button {
-        width: 120px;
+input.button, input.button:hover {
+        width: 100px;
         height: 30px;
         font-family: 'JandaSafeandSound', Verdana, sans-serif;
         font-size: 0.9em;
@@ -69,25 +67,14 @@ input.button {
         box-shadow:rgba(128,192,255,0.75) 0px 8px 24px inset; 
         text-shadow: 2px 2px 2px #fff;
         margin: 0 0 0 10px;
+		float: left;
+		cursor: pointer;
 }
 
 input.button:hover {        
-        width: 120px;
-        height : 30px;
-        font-family: 'JandaSafeandSound', Verdana, sans-serif;
-        font-size: 0.9em;
-        font-weight: bold;
-        border: 2px solid #808080;
-        border-radius: 6px;
         background-color:rgba(0,97,216,0.75);        
         background-image:-webkit-gradient(linear, 0% 0%, 0% 90%, from(rgba(0,97,216,0.75)), to(rgba(0,53,117,0.9)));        
         background-image:-moz-linear-gradient(top,bottom,from(rgba(0,97,216,0.75)), to(rgba(0,53,117,0.9)));
-        -webkit-box-shadow: rgba(128,192,255,0.75) 0px 8px 24px inset;
-        -khtml-box-shadow:rgba(128,192,255,0.75) 0px 8px 24px inset;        
-        -moz-box-shadow:rgba(128,192,255,0.75) 0px 8px 24px inset;        
-        box-shadow:rgba(128,192,255,0.75) 0px 8px 24px inset;
-        text-shadow: 2px 2px 2px #fff;
-        margin: 0 0 0 12px;        
 }
 
 canvas {
@@ -169,7 +156,7 @@ canvas {
         float: left;
         display: block;
         width: 250px;
-        height: 660px;
+        height: 680px;
         border: 2px solid #ccc;
         text-align: left;
         z-index: 700;
@@ -212,7 +199,7 @@ span#script {
 
 div#play_score {
         position: absolute;
-        top: 630px;
+        top: 660px;
         left: 50%;
         margin-left: -130px;
         width: 255px;
@@ -224,4 +211,33 @@ div#play_score {
         font-size: 1.0em;
         font-weight: bold;
         z-index: 600;
+}
+
+.GameModeControls input[type="checkbox"]  {
+	float: left; 
+	margin-top: 8px; 
+	margin-right: 4px;
+	margin-bottom: 0px;
+}
+.GameModeControls input[type="range"]  {
+	-webkit-appearance: none !important;
+	margin-left: 8px;
+	margin-top: 6px;
+	height: 15px;
+	background: #555555;
+	color: red;
+}
+.GameModeControls input[type="range"]::-webkit-slider-thumb  {
+	 -webkit-appearance: none;
+    background-color: #fff;
+    opacity: 0.5;
+    width: 10px;
+    height: 15px;
+}
+#SfxVolume { margin-left: 22px; }
+.GameModeControls label {
+	float: left; 
+}
+.GameModeControls br {
+	clear: both;
 }
