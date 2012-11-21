@@ -15,7 +15,7 @@ function generateLevel4()
 	level.addEnemy(e);
         }
 
-        for (var i = 800; i <= 1000; i+= 200)
+        for (var i = 300; i <= 600; i+= 100)
         {
 	e = createEnemy1(i);
 	move002a(e);
@@ -23,11 +23,35 @@ function generateLevel4()
 	level.addEnemy(e);
         }
 
-        for (var i = 900; i <= 1100; i += 200)
+        for (var i = 300; i <= 700; i += 100)
         {
 	e = createEnemy1(i);
 	move002b(e);
 	spellCard002(e);
+	level.addEnemy(e);
+        }
+
+        for (var i = 600; i < 1200; i += 100)
+        {
+	e = createEnemy3(i);
+	move006(e);
+	spellCard007(e);
+	level.addEnemy(e);
+        }
+
+        for (var i = 1100; i < 1400; i += 100)
+        {
+	e = createEnemy1(i);
+	move019(e);
+	spellCard020(e);
+	level.addEnemy(e);
+        }
+
+        for (var i = 1600; i < 1800; i += 50)
+        {
+	e = createEnemy4(i);
+	move014(e);
+	spellCard007(e);
 	level.addEnemy(e);
         }
 
@@ -49,7 +73,7 @@ function createEnemy15(d)
 {
         var e = new Enemy();
         e.level = 5;
-        e.life = 2000;
+        e.life = 5500;
         e.w = 48; e.h = 64;
         e.image = img_bss3;
         e.delay = d;
@@ -72,14 +96,13 @@ function createEnemy16(d)
 // MOVEMENTS
 ////////////////////////////////////////
 
-// enter from top, looping triangle
+// enter from top, stay, exit
 function move019(e)
 {
         e.addMovement(new Movement(2, bg.w/2, 0, bg.w/2, 150));
-        
-        e.addLoopingMovement(new Movement(2, 0, 0, bg.w/2-150, 150));
-        e.addLoopingMovement(new Movement(2, 0, 0, bg.w/2+150, 150));
-        e.addLoopingMovement(new Movement(2, 0, 0, bg.w/2, 250));
+        e.addRelativeMovement(new Movement(2, 0, 0, bg.w/2, 20));
+        e.addRelativeMovement(new Movement(2, 0, 0, bg.w/2, 300));
+        e.addRelativeMovement(new Movement(2, 0, 0, bg.w/2, 0))
 }
 ////////////////////////////////////////
 // SPELLCARDS

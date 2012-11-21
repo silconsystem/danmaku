@@ -141,8 +141,31 @@ PlayerSpell.prototype.check = function()
 
 		if (area_overlap(this.area(), e.area()))
 		{
-			e.hit = 1;
-			e.life -= 500;
+			if (e.level == 1)
+			{
+			        e.hit = 1;
+			        e.life -= 5;
+			}
+			else if (e.level == 2)
+			{
+			        e.hit = 1;
+			        e.life -= 10;
+			}
+			else if (e.level == 3)
+			{
+			        e.hit = 1;
+			        e.life -= 20;
+			}
+			else if (e.level == 4)
+			{
+			        e.hit = 1;
+			        e.life -= 30;
+			}
+			else if (e.level == 5)
+			{
+			        e.hit = 1;
+			        e.life -= 50;
+			}
 		}
 	}
 

@@ -60,21 +60,21 @@
 			<input type="button" class="button" onClick="javascript:stop();" value="Stop!" />
 			<form name="gameMode" class="GameModeControls">
 			<br style='clear: both' />
-			        <input type="checkbox" name="mode" id="box1" checked> <label for="box1">Die in Game</label> <br />
-			        <input type="checkbox" name="mode" id="box2"> <label for="box2">Dont Die in Game</label><br />
-			        <input type="checkbox" name="mode" id="box3"> <label for="box3">Full Power</label><br />
-			        <input type="checkbox" name="mode" id="box4"> <label for="box4">Start at level 2</label><br />
-			        <input type="checkbox" name="mode" id="box5"> <label for="box5">Start at level 3</label><br />
-			        <input type="checkbox" name="mode" id="box6"> <label for="box6">Start at level 4</label><br />
+			        <input type="checkbox" name="mode" id="box1" checked> 	<label for="box1">Die in Game</label> <br />
+			        <input type="checkbox" name="mode" id="box2"> 	<label for="box2">Dont Die in Game</label><br />
+			        <input type="checkbox" name="mode" id="box3"> 	<label for="box3">Full Power</label><br />
+			        <input type="checkbox" name="mode" id="box4"> 	<label for="box4">Start at level 2</label><br />
+			        <input type="checkbox" name="mode" id="box5"> 	<label for="box5">Start at level 3</label><br />
+			        <input type="checkbox" name="mode" id="box6"> 	<label for="box6">Start at level 4</label><br />
 					
-					<input type="checkbox" name="mode" id="box7" checked onClick="javascript:toggleMusic()"> 
-					<label for="box7">Music</label>
-					<input id="MusicVolume" type="range" min="0" max="1" step="0.01" value="0.5" onchange="ChangeMusicVolume(this.value);"  /><br />
-					
-					<input type="checkbox" name="mode" id="box8" checked> 
-					<label for="box8">Sfx</label>
-					<input id="SfxVolume" type="range" min="0" max="1" step="0.01" value="0.5"  />
-					<br />
+			        <input type="checkbox" name="mode" id="box7" checked onClick="javascript:toggleMusic()">
+				<label for="box7">Music</label>
+			        <input id="MusicVolume" type="range" min="0" max="1" step="0.01" value="0.5" onchange="ChangeMusicVolume(this.value);"  />
+			        <br />					
+			        <input type="checkbox" name="mode" id="box8" checked> 
+				<label for="box8">Sfx</label>
+			        <input id="SfxVolume" type="range" min="0" max="1" step="0.01" value="0.5"  />
+			        <br />
 			</form>
 			
 			<div id="play_score">
@@ -407,7 +407,7 @@ function work()
 			}
 			else if (document.gameMode.mode[1].checked == true)
 			{
-				document.getElementById("box1").checked = false;2
+				document.getElementById("box1").checked = false;
 
 				pg.health = 10;
 			}

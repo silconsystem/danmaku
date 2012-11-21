@@ -333,7 +333,7 @@ Player.prototype.bomb = function()
 		for (var j = 0; j < 4; j++)
 		{
 			theta = j * 0.7;
-			twist = j * Math.sin(theta);
+			twist = j * Math.cos(theta);
 			centerX = this.movement.cx + 12;
 			centerY = this.movement.cy - 16;
 
