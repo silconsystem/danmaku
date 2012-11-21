@@ -66,8 +66,8 @@
 			        <input type="checkbox" name="mode" id="box4">Start at level 2<br />
 			        <input type="checkbox" name="mode" id="box5">Start at level 3<br />
 			        <input type="checkbox" name="mode" id="box6">Start at level 4<br />
-					<input type="checkbox" name="mode" id="box7" checked onClick="javascript:toggleMusic()">Music<br />
-					<input type="checkbox" name="mode" id="box8" checked>Sfx<br />
+			        <input type="checkbox" name="mode" id="box7" checked onClick="javascript:toggleMusic()">Music<br />
+			        <input type="checkbox" name="mode" id="box8" checked>Sfx<br />
 			</form>
 			
 			<div id="play_score">
@@ -336,8 +336,7 @@ function work()
 	// handle enemy spawning
 	var spawned = this.level.spawn(); // get array of enemies spawn in the current frame
 	
-	for (var i = 0; i < spawned.length; i++)
-	    enemies[enemies.length] = spawned[i];
+	for (var i = 0; i < spawned.length; i++) enemies[enemies.length] = spawned[i];
 	
 	var graze_score = pg.graze * 10;
 	
@@ -345,10 +344,10 @@ function work()
 	score_text.innerHTML = score;
 	power_text.innerHTML = pg.power;
 	
-	        if (pg.power >= 60)
-	        {
-		        power_text.innerHTML = "MAX !!!"
-	        }
+	if (pg.power >= 60)
+	{
+		power_text.innerHTML = "MAX !!!"
+	}
 	
 	graze_text.innerHTML = graze_score;
 	total_text.innerHTML = score + graze_score;
@@ -356,13 +355,13 @@ function work()
 	bombs_text.innerHTML = bombs;
 	spell_text.innerHTML = spell;
 		
-	        if ((score+graze_score) == 200000)
-	        {
-		        bombs += 1;
-		        spell += 1;
-		        score += 100;
-		        pg.health = 10;
-	        }
+	if ((score+graze_score) == 200000)
+	{
+		bombs += 1;
+		spell += 1;
+		score += 100;
+		pg.health = 10;
+	}
 	
 	oe_text.innerHTML = enemies.length;
 	ob_text.innerHTML = bullets.length;
@@ -373,8 +372,8 @@ function work()
 	// increment currentLevel
 	if (powerups.length == 0 && enemies.length == 0 && bullets.length == 0 && level.finished == 1)
 	{
-	        currentLevel += 1;
-	        play();
+		currentLevel += 1;
+		play();
 	}
 				
 	// increment frame
