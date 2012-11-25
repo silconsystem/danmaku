@@ -3,7 +3,7 @@ JavaScript Danmaku Game,
 The source of this project can be found at: http://www.kikya.com/danmaku/
 Credit goes to Sako (zomgsako@gmail.com) for writing the engine for this game,
 to follow the development view a working demo here:
-http://marisa.byethost11.com
+http://marisa-danmaku.comule.com
 
 I took on the challenge of writing the missing game elements.
 
