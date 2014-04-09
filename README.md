@@ -33,4 +33,4 @@ TODO list:
 
 The game is a tribute to the TouHou series and I would like to keep the characters and story in the same context.
 Everyone is free to use the scripts at will however such as Sako intended while coding this game.
-:laughing:
+:kissing_heart:
