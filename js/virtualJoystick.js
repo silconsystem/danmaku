@@ -1,0 +1,1 @@
+var joy = new JoyStick('joyDiv');

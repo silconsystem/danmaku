@@ -244,3 +244,9 @@ div#play_score {
 .GameModeControls br {
         clear: both;
 }
+
+/* virtual joystick */
+#joyDiv {
+  position: absolute;
+  right: 50%;
+}
