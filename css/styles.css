@@ -88,6 +88,7 @@ canvas {
 #bg_canv {
         z-index: 100;
 }
+
 #fx1canv {
         z-index: 200;
 }
@@ -245,8 +246,23 @@ div#play_score {
         clear: both;
 }
 
-/* virtual joystick */
-#joyDiv {
-  position: absolute;
-  right: 50%;
+#button-controls.button-controls {
+  position: relative;
+  top: 0;
+  left: 0;
+  display: block;
+  z-index: 1000;
+}
+
+.control-buttons {
+  background-color: #04AA6D;
+  border: none;
+  border-radius: 50%;
+  color: #04AA6D;
+  padding: 20px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 16px;
+  margin: 4px 2px;
 }
