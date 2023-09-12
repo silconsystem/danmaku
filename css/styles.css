@@ -51,6 +51,7 @@ h2 {
 }
 
 input.button, input.button:hover {
+        user-select: none;
         width: 100px;
         height: 30px;
         font-family: 'JandaSafeandSound', Verdana, sans-serif;
@@ -71,10 +72,15 @@ input.button, input.button:hover {
 		cursor: pointer;
 }
 
-input.button:hover {        
+input.button:hover {
+        user-select: none;
         background-color:rgba(0,97,216,0.75);        
         background-image:-webkit-gradient(linear, 0% 0%, 0% 90%, from(rgba(0,97,216,0.75)), to(rgba(0,53,117,0.9)));        
         background-image:-moz-linear-gradient(top,bottom,from(rgba(0,97,216,0.75)), to(rgba(0,53,117,0.9)));
+}
+
+#fullscreen-toggle.button {
+  user-select: none;
 }
 
 canvas {
@@ -83,7 +89,6 @@ canvas {
         border-radius: 6px;
         float: left;
         display: block;
-        pointer-events: none;
 }
 
 #bg_canv {
@@ -252,13 +257,15 @@ div#play_score {
 /* joystick-container */
 
     .joystick-container {
+      width: 63%;
+      height: 30%;
       position: absolute;
       display: block;
       flex-direction: column;
       align-items: center;
       justify-content: center;
-      margin-top: 460px;
-      margin-left: 50px;
+      margin-top: 320px;
+      margin-left: 80px;
       z-index: 1000;
     }
 
@@ -296,21 +303,37 @@ div#play_score {
 
 #button-controls.button-controls {
   position: relative;
-  top: 0;
+  top: 140px;
   left: 0;
   flex: 1;
   z-index: 1000;
 }
 
+.joystick.control-buttons {
+  float: right;
+}
+
+.joystick {
+  position: absolute;
+  top: 90px;
+  left: 400px;
+}
 .control-buttons {
-  background-color: #04AA6D;
+  width: 40px;
+  height: 40px;
+  opacity: 0.3;
+  user-select: none;
+  float: left;
+  background-color: grey;
   border: none;
   border-radius: 50%;
-  color: #04AA6D;
+  color: slategray;
   padding: 20px;
   text-align: center;
   text-decoration: none;
   display: inline-block;
   font-size: 16px;
+  font-weight: bolder;
+  font-family: 'JandaSafeandSound.ttf';
   margin: 4px 2px;
 }

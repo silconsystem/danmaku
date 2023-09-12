@@ -76,6 +76,7 @@
           <label for="box8">Sfx</label>
           <input id="SfxVolume" type="range" min="0" max="1" step="0.01" value="0.5" />
           <br />
+          <input id="fullscreen-toggle" class="button nonactive" onClick="console.log('pressed fullscreen button');" value="FULLSCREEN"/>
         </form>
 
         <div id="play_score">
@@ -99,11 +100,13 @@
       <!-- virtual joystick -->
 
       <div class="joystick-container">
-        <div class="joystick"></div>
+        <div class="joystick control-buttons"></div>
+        <!--
         <div class="debug-container">
           <div>Delta X: <span id="delta-x">0</span></div>
           <div>Delta Y: <span id="delta-y">0</span></div>
         </div>
+        -->
          <div id="button-controls" class="button-controls">
           <div id="shot" class="control-buttons"><button>SHOT</button></div>
           <div id="focus" class="control-buttons"><button>FOCUS</button></div>
@@ -358,8 +361,6 @@
   }
 
 
-
-
   const joystickContainer = document.querySelector('.joystick');
   const deltaX = document.querySelector('#delta-x');
   const deltaY = document.querySelector('#delta-y');
@@ -369,10 +370,13 @@
     height: 150,
     color: 'gray',
     handleColor: 'white',
-    handleRadius: 30,
+    handleRadius: 40,
     onChange: function(delta) {
-      deltaX.textContent = delta.x.toFixed(2);
-      deltaY.textContent = delta.y.toFixed(2);
+      
+      if (deltaX && deltaY) {
+        deltaX.textContent = delta.x.toFixed(2);
+        deltaY.textContent = delta.y.toFixed(2);
+      }
 
       var delta_x = delta.x.toFixed(0);
       var delta_y = delta.y.toFixed(0);
@@ -395,8 +399,43 @@
 
 <script type="text/javascript">
 
-  
-
+  // fullscreen function
+  if (document.documentElement.requestFullscreen) {
+    
+    function enterFullscreen() {
+      
+      if (document.documentElement.requestFullscreen) {
+        
+        document.documentElement.requestFullscreen();
+      }
+    }
+    
+    // function to exit fullscreen
+    function exitFullscreen() {
+      
+      if (document.exitFullscreen) {
+        
+        document.exitFullscreen();
+      }
+    }
+    // toggle button
+    const fullscreenButton = document.getElementById('fullscreen-toggle');
+    
+    fullscreenButton.addEventListener("click", () => {
+      
+      if (!document.fullscreenElement) {
+        
+        enterFullscreen();
+      } else {
+        
+        exitFullscreen();
+      }
+    });
+  } else {
+    
+    // fullscreen API not supported
+    console.error('fullscreen API not supported');
+  }
 
   // canvas variables
   var bg_canv = document.getElementById('bg_canv');
