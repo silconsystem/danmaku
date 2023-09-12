@@ -83,6 +83,7 @@ canvas {
         border-radius: 6px;
         float: left;
         display: block;
+        pointer-events: none;
 }
 
 #bg_canv {
@@ -125,7 +126,7 @@ canvas {
         float: right;
         z-index: 400;
 }*/
-
+/*
 .marisa {
         position: absolute;
         top: 400px;
@@ -137,11 +138,13 @@ canvas {
 */
 #header {
         /* not applicable yet */
-}75
+}
 
 #canvas_wrapper {
+        left: 0; 
         float: left;
-        width: 550px;
+        width: 650px;
+        pointer-events: none;
 }
 
 #game_hud {
@@ -246,11 +249,56 @@ div#play_score {
         clear: both;
 }
 
+/* joystick-container */
+
+    .joystick-container {
+      position: absolute;
+      display: block;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      margin-top: 460px;
+      margin-left: 50px;
+      z-index: 1000;
+    }
+
+    .debug-container {
+      margin-top: 20px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      color: gray;
+    }
+
+    /* Responsive styles */
+
+    @media screen and (max-width: 768px) {
+      .joystick-container {
+        margin-top: 20px;
+      }
+
+      .debug-container {
+        margin-top: 10px;
+      }
+
+    }
+
+    @media screen and (max-width: 480px) {
+      .joystick-container {
+        margin-top: 10px;
+      }
+
+      .debug-container {
+        margin-top: 5px;
+      }
+    }
+
 #button-controls.button-controls {
   position: relative;
   top: 0;
   left: 0;
-  display: block;
+  flex: 1;
   z-index: 1000;
 }
 

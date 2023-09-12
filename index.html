@@ -13,52 +13,6 @@
   <link href='http://fonts.googleapis.com/css?family=Bilbo+Swash+Caps' rel='stylesheet' type='text/css'>
   <link href='http://fonts.googleapis.com/css?family=Skranji' rel='stylesheet' type='text/css'>
 
-
-  <style>
-    .joystick-container {
-      position: absolute;
-      display: block;
-      flex-direction: column;
-      align-items: center;
-      justify-content: center;
-      margin-top: 300px;
-      margin-left: 400px;
-      z-index: 1000;
-    }
-
-    .debug-container {
-      margin-top: 20px;
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      justify-content: center;
-      color: gray;
-    }
-
-    /* Responsive styles */
-
-    @media screen and (max-width: 768px) {
-      .joystick-container {
-        margin-top: 20px;
-      }
-
-      .debug-container {
-        margin-top: 10px;
-      }
-
-    }
-
-    @media screen and (max-width: 480px) {
-      .joystick-container {
-        margin-top: 10px;
-      }
-
-      .debug-container {
-        margin-top: 5px;
-      }
-    }
-  </style>
-
 </head>
 
 <body>
@@ -447,6 +401,9 @@
   // canvas variables
   var bg_canv = document.getElementById('bg_canv');
   var bg_ctx = bg_canv.getContext('2d');
+  
+  console.log(`canvas W/H: ${bg_canv.width}, ${bg_canv.height}`);
+  console.log(`screen W/H: ${window.innerWidth}, ${window.innerHeight}`);
 
   var fx1canv = document.getElementById('fx1canv');
   var fx1canv = fx1canv.getContext('2d');
@@ -898,26 +855,54 @@
   const bombBtn = document.getElementById('bomb');
   const specialBtn = document.getElementById('special');
   
+  // shot button 
   shotBtn.addEventListener("touchstart", function (e) {
     
     sh_p = 1;
-    console.log('touched shot button');
+    console.log('touchstart shot button');
   });
   shotBtn.addEventListener("touchend", function(e) {
     
     sh_p = 0;
-    console.log('touched shot button');
+    console.log('touchend shot button');
   });
+  
+  // focus button 
   focusBtn.addEventListener("touchstart", function(e) {
     
     sm_p = 1;
-    console.log('touched focus button');
+    console.log('touchstart focus button');
   });
   focusBtn.addEventListener("touchend", function(e) {
     
     sm_p = 0;
-    console.log('touched focus button');
+    console.log('touchend focus button');
   });
+  
+  // bomb button
+  bombBtn.addEventListener("touchstart", function(e) {
+    
+    s2_p = 1;
+    console.log('touchstart bomb button');
+  });
+  bombBtn.addEventListener("touchend", function(e) {
+    
+    s2_p = 0;
+    console.log('touchend bomb button');
+  });
+  
+  // special button
+  specialBtn.addEventListener("touchstart", function(e) {
+    
+    s3_p = 1;
+    console.log('touchstart special button');
+  });
+  specialBtn.addEventListener("touchend", function(e) {
+    
+    s3_p = 0;
+    console.log('touchend special button');
+  });
+  
   // stop the game
   function stop()
   {
