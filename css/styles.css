@@ -106,10 +106,10 @@ canvas {
  * 		DIV Styles
  * 				------------- */
 #game_wrapper {
-        position: absolute;
-        top: 0;
+        position: fixed;
+        top: 0;/*
         left: 50%;
-        margin-left: -425px;
+        margin-left: -425px;*/
         padding: 15px;
         background-color: #000;
         border: 2px solid #ccc;
