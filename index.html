@@ -108,10 +108,10 @@
         </div>
         -->
          <div id="button-controls" class="button-controls">
-          <div id="shot" class="control-buttons"><button>SHOT</button></div>
-          <div id="focus" class="control-buttons"><button>FOCUS</button></div>
-          <div id="bomb" class="control-buttons"><button>BOMB</button></div>
-          <div id="special" class="control-buttons"><button>SPECIAL</button></div>
+          <div id="shot" class="control-buttons"><button><img src="img/icon/target.png"/></button></div>
+          <div id="focus" class="control-buttons"><button><img src="img/icon/unfold.png"/></button></div>
+          <div id="bomb" class="control-buttons"><button><img src="img/icon/stars.png"/></button></div>
+          <div id="special" class="control-buttons"><button><img src="img/icon/bright.png"/></button></div>
       </div>
 
         </div>
@@ -208,11 +208,11 @@
       this.container = container;
       this.options = Object.assign(
         {
-          width: 100,
-          height: 100,
+          width: 200,
+          height: 200,
           color: 'gray',
           handleColor: 'white',
-          handleRadius: 20,
+          handleRadius: 40,
           onChange: null,
         },
         options
@@ -366,8 +366,8 @@
   const deltaY = document.querySelector('#delta-y');
 
   const joystick = new VirtualJoystick(joystickContainer, {
-    width: 150,
-    height: 150,
+    width: 200,
+    height: 200,
     color: 'gray',
     handleColor: 'white',
     handleRadius: 40,
